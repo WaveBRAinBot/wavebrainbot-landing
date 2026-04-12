@@ -57,8 +57,8 @@ export default function ArticlePage() {
             Um atendente CLT com salário de R$ 2.500 não custa R$ 2.500. Custa bem mais. O Brasil tem um dos sistemas de encargos trabalhistas mais complexos do mundo, e ignorar esse custo é um erro que cobra caro no final do ano.
           </p>
 
-          <div className="rounded-2xl p-6 my-8" style={{ background: "rgba(255,68,68,0.06)", border: "1px solid rgba(255,68,68,0.2)" }}>
-            <p className="text-sm font-semibold uppercase tracking-wider mb-4 text-red-400">
+          <div className="rounded-2xl p-6 my-8" style={{ background: "rgba(168,85,247,0.06)", border: "1px solid rgba(168,85,247,0.2)" }}>
+            <p className="text-sm font-semibold uppercase tracking-wider mb-4 text-purple-400">
               Custo real mensal — atendente CLT (salário base R$ 2.500)
             </p>
             <div className="space-y-2 text-sm">
@@ -79,7 +79,7 @@ export default function ArticlePage() {
               ))}
               <div className="border-t border-white/10 pt-2 mt-2 flex justify-between">
                 <span className="text-white font-bold">Total mensal</span>
-                <span className="font-black text-red-400 text-base">R$ 4.576</span>
+                <span className="font-black text-purple-400 text-base">R$ 4.576</span>
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@ export default function ArticlePage() {
               "Erros, respostas inconsistentes e tom de voz fora do padrão são inevitáveis sem supervisão constante",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
-                <span className="text-red-400 mt-1 flex-shrink-0">✕</span>
+                <span className="text-purple-400 mt-1 flex-shrink-0">✕</span>
                 <span>{item}</span>
               </li>
             ))}
@@ -159,7 +159,7 @@ export default function ArticlePage() {
                 ].map(([crit, human, ai]) => (
                   <tr key={crit} style={{ background: "rgba(255,255,255,0.01)" }}>
                     <td className="p-3 text-white/70">{crit}</td>
-                    <td className="p-3 text-center text-red-400">{human}</td>
+                    <td className="p-3 text-center text-purple-400">{human}</td>
                     <td className="p-3 text-center font-semibold" style={{ color: "var(--brand-green)" }}>{ai}</td>
                   </tr>
                 ))}

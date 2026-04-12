@@ -112,7 +112,7 @@ export default function Niches() {
                   <ul className="space-y-2">
                     {niche.pains.map((pain) => (
                       <li key={pain} className="flex items-start gap-2">
-                        <span className="text-red-400 mt-0.5 text-xs flex-shrink-0">✗</span>
+                        <span className="text-purple-400 mt-0.5 text-xs flex-shrink-0">✗</span>
                         <span className="text-white/60 text-sm">{pain}</span>
                       </li>
                     ))}

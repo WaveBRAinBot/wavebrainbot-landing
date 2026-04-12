@@ -78,7 +78,7 @@ const stats = [
     suffix: "h",
     label: "tempo médio de resposta B2B. 58% nunca respondem.",
     sublabel: "Drift / InsideSales Lead Response Report",
-    color: "#ff4444",
+    color: "#a855f7",
   },
 ];
 
@@ -92,20 +92,20 @@ export default function SpeedToLead() {
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 50% 50%, #ff4444 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 50% at 50% 50%, #a855f7 0%, transparent 70%)",
         }}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div ref={titleRef} className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/30 bg-red-500/10 text-sm text-red-400 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 text-sm text-purple-400 mb-6">
             <AlertTriangle size={14} />
             <span>Dados de pesquisa — não é opinião</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">
             A velocidade de resposta{" "}
-            <span style={{ color: "#ff4444" }}>mata</span> ou{" "}
+            <span style={{ color: "#a855f7" }}>mata</span> ou{" "}
             <span style={{ color: "var(--brand-green)" }}>salva</span> sua venda
           </h2>
           <p className="text-white/50 max-w-2xl mx-auto text-lg leading-relaxed">
@@ -144,9 +144,9 @@ export default function SpeedToLead() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
             {[
-              { icon: Clock, value: "~23", label: "leads perdidos por mês", sub: "pela regra dos 78%", color: "#ff4444" },
+              { icon: Clock, value: "~23", label: "leads perdidos por mês", sub: "pela regra dos 78%", color: "#a855f7" },
               { icon: Zap, value: "R$ 11.500", label: "perdidos todo mês", sub: "com ticket médio de R$ 500", color: "#ffe600" },
-              { icon: TrendingUp, value: "R$ 138.000", label: "por ano desperdiçados", sub: "só por lentidão no atendimento", color: "#ff4444" },
+              { icon: TrendingUp, value: "R$ 138.000", label: "por ano desperdiçados", sub: "só por lentidão no atendimento", color: "#a855f7" },
             ].map((item) => (
               <div key={item.label} className="text-center py-4 px-3 rounded-xl bg-white/[0.03]">
                 <p className="text-2xl font-black mb-1" style={{ color: item.color }}>{item.value}</p>

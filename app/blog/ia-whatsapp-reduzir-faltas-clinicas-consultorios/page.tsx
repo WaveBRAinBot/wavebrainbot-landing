@@ -57,8 +57,8 @@ export default function ArticlePage() {
             A taxa média de faltas em clínicas brasileiras fica entre <strong className="text-white">20% e 30%</strong> das consultas agendadas — dado consistente em estudos do CFM e plataformas como iClinic e Doctoralia. Em uma agenda com 20 consultas por dia, isso significa 4 a 6 horários vazios diariamente.
           </p>
 
-          <div className="rounded-2xl p-6 my-8" style={{ background: "rgba(255,68,68,0.06)", border: "1px solid rgba(255,68,68,0.2)" }}>
-            <p className="text-sm font-semibold uppercase tracking-wider mb-4 text-red-400">Exemplo: clínica com 20 consultas/dia</p>
+          <div className="rounded-2xl p-6 my-8" style={{ background: "rgba(168,85,247,0.06)", border: "1px solid rgba(168,85,247,0.2)" }}>
+            <p className="text-sm font-semibold uppercase tracking-wider mb-4 text-purple-400">Exemplo: clínica com 20 consultas/dia</p>
             <div className="grid grid-cols-3 gap-4 text-center">
               {[
                 { value: "~5", label: "faltas por dia", sub: "taxa média de 25%" },
@@ -66,7 +66,7 @@ export default function ArticlePage() {
                 { value: "R$ 25.000", label: "perdidos/mês", sub: "ticket médio R$ 250" },
               ].map((i) => (
                 <div key={i.label}>
-                  <p className="text-xl font-black text-red-400">{i.value}</p>
+                  <p className="text-xl font-black text-purple-400">{i.value}</p>
                   <p className="text-white text-xs font-semibold mt-1">{i.label}</p>
                   <p className="text-white/40 text-xs">{i.sub}</p>
                 </div>

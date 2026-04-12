@@ -105,7 +105,7 @@ export default function ArticlePage() {
 
           <div
             className="rounded-xl p-5 my-6"
-            style={{ background: "rgba(255,68,68,0.06)", border: "1px solid rgba(255,68,68,0.2)" }}
+            style={{ background: "rgba(168,85,247,0.06)", border: "1px solid rgba(168,85,247,0.2)" }}
           >
             <div className="grid grid-cols-3 gap-4 text-center">
               {[
@@ -114,7 +114,7 @@ export default function ArticlePage() {
                 { value: "R$ 138.000", label: "por ano desperdiçados", sub: "só pela demora" },
               ].map((i) => (
                 <div key={i.label}>
-                  <p className="text-xl font-black text-red-400">{i.value}</p>
+                  <p className="text-xl font-black text-purple-400">{i.value}</p>
                   <p className="text-white text-xs font-semibold mt-1">{i.label}</p>
                   <p className="text-white/40 text-xs">{i.sub}</p>
                 </div>

@@ -76,11 +76,11 @@ export default function Pricing() {
           <div
             className="inline-block rounded-2xl px-6 py-4 text-left max-w-2xl w-full"
             style={{
-              background: "rgba(255,68,68,0.05)",
-              border: "1px solid rgba(255,68,68,0.2)",
+              background: "rgba(168,85,247,0.05)",
+              border: "1px solid rgba(168,85,247,0.2)",
             }}
           >
-            <p className="text-xs font-bold uppercase tracking-wider text-red-400 mb-3">
+            <p className="text-xs font-bold uppercase tracking-wider text-purple-400 mb-3">
               Quanto custa atender 24/7 sem IA?
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">

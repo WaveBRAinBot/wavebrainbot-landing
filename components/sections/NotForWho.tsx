@@ -27,7 +27,7 @@ export default function NotForWho() {
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white mb-3">
             Somos diretos:{" "}
-            <span style={{ color: "#ff4444" }}>não somos pra todo mundo</span>
+            <span style={{ color: "#a855f7" }}>não somos pra todo mundo</span>
           </h2>
           <p className="text-white/50 max-w-lg mx-auto text-sm leading-relaxed">
             Não prometemos milagres. Entregamos estrutura e eficiência mensurável —
@@ -37,17 +37,17 @@ export default function NotForWho() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* NÃO É PRA VOCÊ */}
-          <div className="rounded-2xl p-6 border border-red-500/20 bg-red-500/[0.04]">
+          <div className="rounded-2xl p-6 border border-purple-500/20 bg-purple-500/[0.04]">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center">
-                <X size={16} className="text-red-400" />
+              <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
+                <X size={16} className="text-purple-400" />
               </div>
               <h3 className="text-white font-bold">Não é pra você se...</h3>
             </div>
             <ul className="space-y-3">
               {notFor.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <X size={14} className="text-red-400 flex-shrink-0 mt-0.5" />
+                  <X size={14} className="text-purple-400 flex-shrink-0 mt-0.5" />
                   <span className="text-white/60 text-sm">{item}</span>
                 </li>
               ))}
