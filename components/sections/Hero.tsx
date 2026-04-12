@@ -1,13 +1,66 @@
+"use client";
+
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { MessageCircle, Zap } from "lucide-react";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const WA_LINK = "https://wa.me/5513996663009";
+
+function StatBadge({
+  value,
+  suffix,
+  label,
+  color,
+}: {
+  value?: string;
+  suffix?: string;
+  countTo?: number;
+  label: string;
+  color: string;
+}) {
+  return (
+    <div className="flex flex-col items-center">
+      <span className="text-3xl font-black" style={{ color, textShadow: `0 0 20px ${color}80` }}>
+        {value}{suffix}
+      </span>
+      <span className="text-white/40 text-sm">{label}</span>
+    </div>
+  );
+}
+
+function CountStat({
+  target,
+  prefix,
+  suffix,
+  label,
+  color,
+}: {
+  target: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
+  color: string;
+}) {
+  const { ref, value } = useCountUp(target, 2000);
+  return (
+    <div className="flex flex-col items-center">
+      <span
+        ref={ref}
+        className="text-3xl font-black"
+        style={{ color, textShadow: `0 0 20px ${color}80` }}
+      >
+        {prefix}{value}{suffix}
+      </span>
+      <span className="text-white/40 text-sm">{label}</span>
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
     <section className="hero-gradient relative min-h-screen flex items-center pt-20">
-      {/* Animated grid overlay */}
+      {/* Grid overlay */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -28,17 +81,11 @@ export default function Hero() {
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight mb-6 text-white">
             Seu negócio atendendo{" "}
-            <span
-              className="text-glow-green"
-              style={{ color: "var(--brand-green)" }}
-            >
+            <span className="text-glow-green" style={{ color: "var(--brand-green)" }}>
               24/7
             </span>{" "}
             no WhatsApp com{" "}
-            <span
-              className="text-glow-cyan"
-              style={{ color: "var(--brand-cyan)" }}
-            >
+            <span className="text-glow-cyan" style={{ color: "var(--brand-cyan)" }}>
               Inteligência Artificial
             </span>
           </h1>
@@ -75,37 +122,13 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Social proof */}
-          <div className="mt-16 flex flex-wrap justify-center gap-8 text-white/40 text-sm">
-            <div className="flex flex-col items-center">
-              <span
-                className="text-3xl font-black text-glow-green"
-                style={{ color: "var(--brand-green)" }}
-              >
-                24/7
-              </span>
-              <span>Disponibilidade</span>
-            </div>
+          {/* Stats */}
+          <div className="mt-16 flex flex-wrap justify-center gap-8">
+            <StatBadge value="24/7" label="Disponibilidade" color="var(--brand-green)" />
             <div className="w-px bg-white/10 hidden sm:block" />
-            <div className="flex flex-col items-center">
-              <span
-                className="text-3xl font-black text-glow-cyan"
-                style={{ color: "var(--brand-cyan)" }}
-              >
-                3s
-              </span>
-              <span>Tempo de resposta</span>
-            </div>
+            <StatBadge value="3s" label="Tempo de resposta" color="var(--brand-cyan)" />
             <div className="w-px bg-white/10 hidden sm:block" />
-            <div className="flex flex-col items-center">
-              <span
-                className="text-3xl font-black"
-                style={{ color: "var(--brand-yellow)" }}
-              >
-                +70%
-              </span>
-              <span>Redução de custos</span>
-            </div>
+            <CountStat target={70} prefix="+" suffix="%" label="Redução de custos" color="var(--brand-yellow)" />
           </div>
         </div>
       </div>

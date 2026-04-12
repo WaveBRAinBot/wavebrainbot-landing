@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import CursorGlow from "@/components/CursorGlow";
+import { structuredData } from "./structured-data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,12 +35,14 @@ export const metadata: Metadata = {
       "Automatize seu atendimento no WhatsApp com inteligência artificial. Capture leads, qualifique clientes e venda 24/7.",
     type: "website",
     locale: "pt_BR",
+    url: "https://wavebrainbot.com.br",
   },
   twitter: {
     card: "summary_large_image",
     title: "WaveBRAinBot — Agente de IA para WhatsApp",
     description: "Automatize seu atendimento no WhatsApp com IA.",
   },
+  metadataBase: new URL("https://wavebrainbot.com.br"),
 };
 
 export default function RootLayout({
@@ -49,6 +53,11 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+        <CursorGlow />
         {children}
         <Toaster richColors position="top-right" />
       </body>
