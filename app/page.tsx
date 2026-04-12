@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import CosmicBackground from "@/components/CosmicBackground";
 import Hero from "@/components/sections/Hero";
 import Benefits from "@/components/sections/Benefits";
 import HowItWorks from "@/components/sections/HowItWorks";
@@ -12,7 +13,9 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white">
+    <main className="min-h-screen bg-[#0a0a0a] text-white relative">
+      <CosmicBackground />
+      <div className="relative z-10">
       <Navbar />
       <Hero />
       <Benefits />
@@ -23,6 +26,7 @@ export default function Home() {
       <FAQ />
       <CTA />
       <Footer />
+      </div>
       <WhatsAppButton />
     </main>
   );

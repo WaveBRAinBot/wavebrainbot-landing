@@ -46,7 +46,7 @@ export default function Navbar() {
               className="rounded-full"
             />
             <span className="font-bold text-lg text-white">
-              Wave<span style={{ color: "var(--brand-green)" }}>BRAIN</span>Bot
+              Wave<span style={{ color: "var(--brand-green)" }}>BRA</span>in<span style={{ color: "var(--brand-cyan)" }}>Bot</span>
             </span>
           </a>
 
