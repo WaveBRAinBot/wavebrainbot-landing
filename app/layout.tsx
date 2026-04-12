@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import CursorGlow from "@/components/CursorGlow";
+import Analytics from "@/components/Analytics";
 import { structuredData } from "./structured-data";
 
 const geistSans = Geist({
@@ -57,6 +58,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <Analytics />
         <CursorGlow />
         {children}
         <Toaster richColors position="top-right" />
