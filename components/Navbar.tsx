@@ -47,7 +47,7 @@ export default function Navbar() {
               priority
             />
             <span className="font-bold text-lg text-white">
-              Wave<span style={{ color: "var(--brand-green)" }}>BRA</span>in<span style={{ color: "var(--brand-cyan)" }}>Bot</span>
+              <span style={{ color: "var(--name-wave)" }}>Wave</span><span style={{ color: "var(--name-brain)" }}>BRA</span>in<span style={{ color: "var(--name-bot)" }}>Bot</span>
             </span>
           </a>
 

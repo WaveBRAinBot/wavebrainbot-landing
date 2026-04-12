@@ -90,6 +90,10 @@
   --brand-cyan: #00e5ff;
   --brand-yellow: #ffe600;
   --brand-purple: #a855f7;
+  /* Brand name word colors — muted, non-neon */
+  --name-wave: #5eafc6;
+  --name-brain: #7ab648;
+  --name-bot: #c8922a;
 }
 
 @layer base {
