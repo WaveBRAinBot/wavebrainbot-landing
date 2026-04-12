@@ -68,9 +68,39 @@ export default function Pricing() {
             Escolha o plano{" "}
             <span style={{ color: "var(--brand-cyan)" }}>certo</span> para você
           </h2>
-          <p className="text-white/50 max-w-xl mx-auto">
+          <p className="text-white/50 max-w-xl mx-auto mb-8">
             Sem fidelidade longa. Cancele quando quiser. Setup único no início.
           </p>
+
+          {/* Ancoragem: custo real de um atendente CLT 24/7 */}
+          <div
+            className="inline-block rounded-2xl px-6 py-4 text-left max-w-2xl w-full"
+            style={{
+              background: "rgba(255,68,68,0.05)",
+              border: "1px solid rgba(255,68,68,0.2)",
+            }}
+          >
+            <p className="text-xs font-bold uppercase tracking-wider text-red-400 mb-3">
+              Quanto custa atender 24/7 sem IA?
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+              {[
+                { label: "Salário CLT", value: "R$ 2.500", sub: "/mês por atendente" },
+                { label: "Encargos (~75%)", value: "R$ 1.875", sub: "FGTS, INSS, férias…" },
+                { label: "Só horário comercial", value: "8h/dia", sub: "5 dias por semana" },
+                { label: "Custo real mensal", value: "R$ 4.375+", sub: "por atendente" },
+              ].map((item) => (
+                <div key={item.label}>
+                  <p className="text-white font-black text-lg">{item.value}</p>
+                  <p className="text-white/70 text-xs font-semibold">{item.label}</p>
+                  <p className="text-white/40 text-xs">{item.sub}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-white/40 text-xs text-center mt-3">
+              O WaveBRAinBot cobre os mesmos atendimentos por menos de R$ 800/mês — e não tira férias.
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

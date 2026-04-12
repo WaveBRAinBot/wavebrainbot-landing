@@ -44,6 +44,7 @@ export default function Navbar() {
               width={40}
               height={40}
               className="rounded-full"
+              priority
             />
             <span className="font-bold text-lg text-white">
               Wave<span style={{ color: "var(--brand-green)" }}>BRA</span>in<span style={{ color: "var(--brand-cyan)" }}>Bot</span>

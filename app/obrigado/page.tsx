@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { CheckCircle2, Clock, MessageCircle, ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -34,6 +35,18 @@ const nextSteps = [
 export default function ObrigadoPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center px-4">
+      {/* GA4 conversion event */}
+      <Script id="ga-conversion" strategy="afterInteractive">{`
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'conversion', { event_category: 'lead', event_label: 'whatsapp_click' });
+        }
+      `}</Script>
+      {/* Meta Pixel conversion event */}
+      <Script id="meta-conversion" strategy="afterInteractive">{`
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'Lead');
+        }
+      `}</Script>
       {/* Glow central */}
       <div
         className="fixed inset-0 pointer-events-none"

@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
-import CosmicBackground from "@/components/CosmicBackground";
 import ScrollReveal from "@/components/ScrollReveal";
+import { CosmicBackground, ExitIntent } from "@/components/ClientOnlyComponents";
 import Hero from "@/components/sections/Hero";
 import SpeedToLead from "@/components/sections/SpeedToLead";
 import Benefits from "@/components/sections/Benefits";
@@ -39,6 +39,7 @@ export default function Home() {
         <Footer />
       </div>
       <WhatsAppButton />
+      <ExitIntent />
     </main>
   );
 }

@@ -12,6 +12,36 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "custo-atendente-humano-vs-bot-ia-whatsapp",
+    title: "Custo real de um atendente humano vs bot de IA no WhatsApp: a conta que ninguém faz",
+    excerpt:
+      "Com encargos CLT, um atendente custa R$ 4.375+/mês e só trabalha 8h/dia. Veja o comparativo completo contra um agente de IA 24/7.",
+    date: "12 Abr 2026",
+    readTime: "7 min",
+    tag: "Gestão & Custos",
+    tagColor: "var(--brand-yellow)",
+  },
+  {
+    slug: "ia-whatsapp-reduzir-faltas-clinicas-consultorios",
+    title: "Como a IA no WhatsApp reduz faltas e cancela menos na sua clínica ou consultório",
+    excerpt:
+      "Clínicas perdem até 30% das consultas com faltas. Confirmação automática e reagendamento por IA recuperam até 60% desses horários.",
+    date: "12 Abr 2026",
+    readTime: "6 min",
+    tag: "Clínicas & Saúde",
+    tagColor: "var(--brand-cyan)",
+  },
+  {
+    slug: "whatsapp-business-api-vs-agente-ia",
+    title: "WhatsApp Business API vs Agente de IA: qual sua empresa realmente precisa?",
+    excerpt:
+      "A API sozinha não faz nada. Um chatbot de fluxos engessa. Um agente de IA pensa. Entenda as diferenças antes de decidir.",
+    date: "12 Abr 2026",
+    readTime: "6 min",
+    tag: "Tecnologia",
+    tagColor: "var(--brand-green)",
+  },
+  {
     slug: "por-que-responder-rapido",
     title: "Por que responder rápido vale mais do que qualquer script de vendas",
     excerpt:
