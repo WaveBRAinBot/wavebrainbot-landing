@@ -4,7 +4,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { CosmicBackground, ExitIntent } from "@/components/ClientOnlyComponents";
 import ErrorBoundary from "@/components/error-boundary";
 import PageHero from "@/components/sections/PageHero";
-import HowItWorks from "@/components/sections/HowItWorks";
 import AgentFeatures from "@/components/sections/AgentFeatures";
 import Onboarding from "@/components/sections/Onboarding";
 import DedicatedManager from "@/components/sections/DedicatedManager";
@@ -15,7 +14,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 export const metadata: Metadata = {
   title: "Como Funciona — WaveBRAinBot",
   description:
-    "Entenda como o agente de IA do WaveBRAinBot funciona, suas funcionalidades e o processo de onboarding para o seu WhatsApp.",
+    "Veja o que o agente de IA do WaveBRAinBot faz, o processo de onboarding completo e como funciona o modelo de gestor de IA dedicado.",
 };
 
 export default function ComoFunciona() {
@@ -27,15 +26,14 @@ export default function ComoFunciona() {
         <ErrorBoundary>
           <PageHero
             eyebrow="Tecnologia"
-            title="Como o Agente"
-            titleAccent="Funciona"
-            subtitle="Entenda a arquitetura por trás do WaveBRAinBot, suas funcionalidades de IA e como ele se integra ao seu WhatsApp em minutos."
+            title="O que o agente faz e"
+            titleAccent="como começar"
+            subtitle="Capacidades do agente de IA, o processo de onboarding em menos de 2 semanas e o modelo de acompanhamento contínuo."
             breadcrumb={[
               { label: "Início", href: "/" },
               { label: "Como Funciona", href: "/como-funciona" },
             ]}
           />
-          <ScrollReveal><HowItWorks /></ScrollReveal>
           <ScrollReveal><AgentFeatures /></ScrollReveal>
           <ScrollReveal><Onboarding /></ScrollReveal>
           <ScrollReveal><DedicatedManager /></ScrollReveal>
