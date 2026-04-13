@@ -1,50 +1,64 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import CursorGlow from "@/components/CursorGlow";
 import Analytics from "@/components/Analytics";
 import { structuredData } from "./structured-data";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "WaveBRAinBot — Agente de IA para WhatsApp",
+  title: "WaveBRAinBot — Agência de Performance com IA",
   description:
-    "Automatize seu atendimento no WhatsApp com inteligência artificial. Capture leads, qualifique clientes e venda 24/7 sem depender de equipe.",
+    "Construímos infraestrutura de IA para o seu negócio. Agentes 24/7 no WhatsApp, tráfego pago e automações que captam, qualificam e convertem — enquanto você foca no que importa.",
   keywords: [
-    "agente de IA",
-    "WhatsApp",
-    "automação",
-    "atendimento",
-    "chatbot",
+    "agência de performance IA",
+    "agente de IA WhatsApp",
+    "automação de atendimento",
     "inteligência artificial",
-    "CRM",
-    "leads",
+    "performance digital",
+    "qualificação de leads",
+    "tráfego pago com IA",
+    "automação WhatsApp",
+    "infraestrutura IA",
   ],
   openGraph: {
-    title: "WaveBRAinBot — Agente de IA para WhatsApp",
+    title: "WaveBRAinBot — Agência de Performance com IA",
     description:
-      "Automatize seu atendimento no WhatsApp com inteligência artificial. Capture leads, qualifique clientes e venda 24/7.",
+      "Infraestrutura de IA para performance: agentes 24/7, tráfego pago e automações que escalam resultado.",
     type: "website",
     locale: "pt_BR",
     url: "https://wavebrainbot.com.br",
   },
   twitter: {
     card: "summary_large_image",
-    title: "WaveBRAinBot — Agente de IA para WhatsApp",
-    description: "Automatize seu atendimento no WhatsApp com IA.",
+    title: "WaveBRAinBot — Agência de Performance com IA",
+    description: "Infraestrutura de IA para performance: agentes 24/7, tráfego pago e automações que escalam resultado.",
   },
   metadataBase: new URL("https://wavebrainbot.com.br"),
 };
+
+
 
 export default function RootLayout({
   children,
@@ -52,9 +66,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang="pt-BR" className={`${spaceGrotesk.variable} ${inter.variable} ${spaceMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        // static — XSS safe
+        {/* static — XSS safe */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

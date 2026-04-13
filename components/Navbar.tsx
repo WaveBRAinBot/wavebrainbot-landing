@@ -51,12 +51,7 @@ export default function Navbar() {
               className="rounded-full"
               priority
             />
-            <span className="font-bold text-lg text-white">
-              <span style={{ color: "var(--name-wave)" }}>Wave</span>
-              <span style={{ color: "var(--name-brain)" }}>BRA</span>
-              in
-              <span style={{ color: "var(--name-bot)" }}>Bot</span>
-            </span>
+            <span className="brand-name text-lg">WaveBRAinBot</span>
           </Link>
 
           {/* Desktop nav */}

@@ -75,25 +75,24 @@ export default function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/70 mb-8">
             <Zap size={14} style={{ color: "var(--brand-green)" }} />
-            <span>Agente de IA para WhatsApp</span>
+            <span>Agência de Performance com IA</span>
           </div>
 
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight mb-6 text-white">
-            Seu negócio atendendo{" "}
+            Infraestrutura de IA para{" "}
             <span className="text-glow-green" style={{ color: "var(--brand-green)" }}>
-              24/7
+              performance
             </span>{" "}
-            no WhatsApp com{" "}
+            e atendimento{" "}
             <span className="text-glow-cyan" style={{ color: "var(--brand-cyan)" }}>
-              Inteligência Artificial
+              24/7
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed">
-            O WaveBRAinBot responde, qualifica leads e converte clientes
-            automaticamente — enquanto você foca no que importa.
+            Construímos a operação de IA do seu negócio — agentes que atendem, qualificam e convertem no WhatsApp, integrados a tráfego pago e automações que escalam resultado.
           </p>
 
           {/* CTAs */}
