@@ -2,31 +2,36 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { WA_LINK } from "@/lib/constants";
 
 const navItems = [
-  { label: "Início", href: "#" },
-  { label: "Benefícios", href: "#beneficios" },
-  { label: "Como Funciona", href: "#como-funciona" },
-  { label: "Agente de IA", href: "#agente" },
-  { label: "Para Quem", href: "#para-quem" },
-  { label: "Planos", href: "#planos" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Início",        href: "/" },
+  { label: "Como Funciona", href: "/como-funciona" },
+  { label: "Para Quem",     href: "/para-quem" },
+  { label: "Planos",        href: "/precos" },
+  { label: "Blog",          href: "/blog" },
 ];
-
-const WA_LINK = "https://wa.me/5513996663009";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Fecha menu ao navegar
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <header
@@ -37,7 +42,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <Image
               src="/images/logo.png"
               alt="WaveBRAinBot"
@@ -47,20 +52,28 @@ export default function Navbar() {
               priority
             />
             <span className="font-bold text-lg text-white">
-              <span style={{ color: "var(--name-wave)" }}>Wave</span><span style={{ color: "var(--name-brain)" }}>BRA</span>in<span style={{ color: "var(--name-bot)" }}>Bot</span>
+              <span style={{ color: "var(--name-wave)" }}>Wave</span>
+              <span style={{ color: "var(--name-brain)" }}>BRA</span>
+              in
+              <span style={{ color: "var(--name-bot)" }}>Bot</span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
-                className="text-sm text-white/70 hover:text-white transition-colors"
+                className={cn(
+                  "text-sm transition-colors",
+                  pathname === item.href
+                    ? "text-white font-semibold"
+                    : "text-white/70 hover:text-white"
+                )}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -96,14 +109,18 @@ export default function Navbar() {
         <div className="lg:hidden bg-black/95 backdrop-blur-md border-t border-white/10">
           <nav className="flex flex-col px-4 py-4 gap-4">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
-                className="text-white/80 hover:text-white py-2 text-sm"
-                onClick={() => setOpen(false)}
+                className={cn(
+                  "py-2 text-sm transition-colors",
+                  pathname === item.href
+                    ? "text-white font-semibold"
+                    : "text-white/80 hover:text-white"
+                )}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <a
               href={WA_LINK}

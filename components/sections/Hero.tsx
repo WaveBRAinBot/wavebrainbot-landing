@@ -112,7 +112,7 @@ export default function Hero() {
               Quero meu Agente de IA
             </a>
             <a
-              href="#como-funciona"
+              href="/como-funciona"
               className={cn(
                 buttonVariants({ variant: "outline" }),
                 "font-semibold text-base px-8 py-6 text-white border-white/20 hover:bg-white/5"
