@@ -7,6 +7,7 @@ import PageHero from "@/components/sections/PageHero";
 import HowItWorks from "@/components/sections/HowItWorks";
 import AgentFeatures from "@/components/sections/AgentFeatures";
 import Onboarding from "@/components/sections/Onboarding";
+import DedicatedManager from "@/components/sections/DedicatedManager";
 import CTA from "@/components/sections/CTA";
 import Footer from "@/components/sections/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -37,6 +38,7 @@ export default function ComoFunciona() {
           <ScrollReveal><HowItWorks /></ScrollReveal>
           <ScrollReveal><AgentFeatures /></ScrollReveal>
           <ScrollReveal><Onboarding /></ScrollReveal>
+          <ScrollReveal><DedicatedManager /></ScrollReveal>
           <ScrollReveal><CTA /></ScrollReveal>
           <Footer />
         </ErrorBoundary>

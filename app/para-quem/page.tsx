@@ -7,6 +7,7 @@ import PageHero from "@/components/sections/PageHero";
 import Niches from "@/components/sections/Niches";
 import ForWho from "@/components/sections/ForWho";
 import NotForWho from "@/components/sections/NotForWho";
+import LossCalculator from "@/components/sections/LossCalculator";
 import CTA from "@/components/sections/CTA";
 import Footer from "@/components/sections/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -37,6 +38,7 @@ export default function ParaQuem() {
           <ScrollReveal><Niches /></ScrollReveal>
           <ScrollReveal><ForWho /></ScrollReveal>
           <ScrollReveal><NotForWho /></ScrollReveal>
+          <ScrollReveal><LossCalculator /></ScrollReveal>
           <ScrollReveal><CTA /></ScrollReveal>
           <Footer />
         </ErrorBoundary>

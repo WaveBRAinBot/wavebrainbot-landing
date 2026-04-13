@@ -3,44 +3,44 @@ import { Clock, TrendingUp, Users, Zap, Shield, BarChart3 } from "lucide-react";
 const benefits = [
   {
     icon: Clock,
-    title: "Atendimento 24/7",
+    title: "Operação 24/7",
     description:
-      "Nunca mais perca um lead por demora. Seu agente responde instantaneamente a qualquer hora, todos os dias.",
+      "Seu negócio atende, qualifica e converte enquanto você dorme. Sem plantão, sem horas extras, sem lead perdido por demora.",
     color: "var(--brand-green)",
   },
   {
     icon: TrendingUp,
     title: "Mais Conversões",
     description:
-      "Qualifique leads automaticamente e encaminhe os mais quentes para seu time fechar negócio.",
+      "Leads qualificados automaticamente e encaminhados no momento certo para fechar — funil de vendas funcionando sozinho.",
     color: "var(--brand-cyan)",
   },
   {
     icon: Users,
     title: "Escala Sem Equipe",
     description:
-      "Atenda centenas de clientes simultaneamente sem precisar contratar mais pessoas.",
+      "Atenda centenas de clientes simultaneamente. A IA absorve o volume operacional enquanto seu time foca em estratégia.",
     color: "var(--brand-yellow)",
   },
   {
     icon: Zap,
-    title: "Resposta em Segundos",
+    title: "Resposta em 3 Segundos",
     description:
-      "Clientes recebem respostas em até 3 segundos. Zero tempo de espera, máxima satisfação.",
+      "Zero tempo de espera. O cliente entra em contato e já recebe resposta — 100x mais rápido que qualquer atendente humano.",
     color: "var(--brand-green)",
   },
   {
     icon: Shield,
-    title: "Personalizado para Você",
+    title: "100% Personalizado",
     description:
-      "Tom de voz, linguagem e fluxos 100% adaptados à sua marca e tipo de negócio.",
+      "Tom de voz, identidade e fluxos totalmente adaptados. O agente apresenta a sua marca — não uma IA genérica.",
     color: "var(--brand-cyan)",
   },
   {
     icon: BarChart3,
-    title: "Relatórios Completos",
+    title: "Performance Mensurável",
     description:
-      "Acompanhe métricas de atendimento, conversão e satisfação em tempo real.",
+      "Relatórios de atendimento, conversão e resultado entregues com análise real do gestor de IA dedicado.",
     color: "var(--brand-yellow)",
   },
 ];
@@ -58,13 +58,12 @@ export default function Benefits() {
             Por que escolher
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">
-            Benefícios que{" "}
-            <span style={{ color: "var(--brand-cyan)" }}>transformam</span> seu
-            negócio
+            Infraestrutura que{" "}
+            <span style={{ color: "var(--brand-cyan)" }}>amplifica</span> sua
+            operação
           </h2>
           <p className="text-white/50 max-w-xl mx-auto">
-            Enquanto você dorme, seu agente de IA trabalha captando, qualificando
-            e convertendo clientes no WhatsApp.
+            Eficiência não é fazer mais esforço. É ter o sistema certo trabalhando no lugar certo, na hora certa.
           </p>
         </div>
 

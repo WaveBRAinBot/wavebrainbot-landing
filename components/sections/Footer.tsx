@@ -1,5 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Mail } from "lucide-react";
+
+const navLinks = [
+  { label: "Como Funciona", href: "/como-funciona" },
+  { label: "Para Quem", href: "/para-quem" },
+  { label: "Planos e Preços", href: "/precos" },
+  { label: "Blog", href: "/blog" },
+];
 
 export default function Footer() {
   return (
@@ -16,13 +24,10 @@ export default function Footer() {
                 height={36}
                 className="rounded-full"
               />
-              <span className="font-bold text-white">
-                <span style={{ color: "var(--name-wave)" }}>Wave</span><span style={{ color: "var(--name-brain)" }}>BRA</span>in<span style={{ color: "var(--name-bot)" }}>Bot</span>
-              </span>
+              <span className="brand-name text-base">WaveBRAinBot</span>
             </div>
             <p className="text-white/40 text-sm leading-relaxed">
-              Agente de IA para WhatsApp. Automatize, qualifique e converta
-              clientes 24/7.
+              Agência de performance com IA. Construímos a infraestrutura de atendimento, vendas e automação do seu negócio.
             </p>
           </div>
 
@@ -30,16 +35,11 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Navegação</h4>
             <ul className="space-y-2 text-white/40 text-sm">
-              {[
-                { label: "Benefícios", href: "#beneficios" },
-                { label: "Como Funciona", href: "#como-funciona" },
-                { label: "Planos", href: "#planos" },
-                { label: "FAQ", href: "#faq" },
-              ].map((l) => (
+              {navLinks.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="hover:text-white transition-colors">
+                  <Link href={l.href} className="hover:text-white transition-colors">
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

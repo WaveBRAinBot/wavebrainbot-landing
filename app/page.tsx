@@ -5,6 +5,9 @@ import ErrorBoundary from "@/components/error-boundary";
 import Hero from "@/components/sections/Hero";
 import SpeedToLead from "@/components/sections/SpeedToLead";
 import Benefits from "@/components/sections/Benefits";
+import Services from "@/components/sections/Services";
+import DedicatedManager from "@/components/sections/DedicatedManager";
+import LossCalculator from "@/components/sections/LossCalculator";
 import SectionTeaser from "@/components/sections/SectionTeaser";
 import CTA from "@/components/sections/CTA";
 import Footer from "@/components/sections/Footer";
@@ -19,7 +22,10 @@ export default function Home() {
         <ErrorBoundary>
           <Hero />
           <ScrollReveal><SpeedToLead /></ScrollReveal>
+          <ScrollReveal><Services /></ScrollReveal>
           <ScrollReveal><Benefits /></ScrollReveal>
+          <ScrollReveal><DedicatedManager /></ScrollReveal>
+          <ScrollReveal><LossCalculator /></ScrollReveal>
           <ScrollReveal><SectionTeaser /></ScrollReveal>
           <ScrollReveal><CTA /></ScrollReveal>
           <Footer />
