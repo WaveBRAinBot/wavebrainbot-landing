@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import FAQ from "@/components/sections/FAQ";
 import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
-  title: "Blog — WaveBRAinBot",
+  title: "Blog & FAQ — WaveBRAinBot",
   description:
-    "Insights sobre IA aplicada ao WhatsApp, velocidade de atendimento e conversão de leads para negócios brasileiros.",
+    "Insights sobre IA aplicada ao WhatsApp, velocidade de atendimento e conversão de leads. Mais as respostas para as dúvidas mais comuns.",
 };
 
 const posts = [
@@ -58,6 +59,7 @@ export default function BlogPage() {
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <Navbar />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24">
+        {/* Blog */}
         <div className="mb-12">
           <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--brand-green)" }}>
             Blog
@@ -70,7 +72,7 @@ export default function BlogPage() {
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-4 mb-24">
           {posts.map((post) => (
             <Link
               key={post.slug}
@@ -105,7 +107,14 @@ export default function BlogPage() {
             </Link>
           ))}
         </div>
+
+        {/* Divider */}
+        <div className="border-t border-white/10 mb-4" />
       </main>
+
+      {/* FAQ — seção full-width abaixo dos artigos */}
+      <FAQ />
+
       <Footer />
     </div>
   );

@@ -10,12 +10,11 @@ import { cn } from "@/lib/utils";
 import { WA_LINK } from "@/lib/constants";
 
 const navItems = [
-  { label: "Início",        href: "/",              mobileOnly: false },
-  { label: "Como Funciona", href: "/como-funciona", mobileOnly: false },
-  { label: "Para Quem",     href: "/para-quem",     mobileOnly: false },
-  { label: "Planos",        href: "/precos",        mobileOnly: false },
-  { label: "Blog",          href: "/blog",          mobileOnly: false },
-  { label: "FAQ",           href: "/faq",           mobileOnly: true  },
+  { label: "Início",         href: "/" },
+  { label: "Como Funciona",  href: "/como-funciona" },
+  { label: "Nichos",         href: "/para-quem" },
+  { label: "Planos e Preços",href: "/precos" },
+  { label: "Blog & FAQ",     href: "/blog" },
 ];
 
 export default function Navbar() {
@@ -57,7 +56,7 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-6">
-            {navItems.filter((i) => !i.mobileOnly).map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}

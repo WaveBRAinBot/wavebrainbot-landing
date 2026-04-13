@@ -3,11 +3,10 @@ import Link from "next/link";
 import { Mail } from "lucide-react";
 
 const navLinks = [
-  { label: "Como Funciona", href: "/como-funciona" },
-  { label: "Para Quem", href: "/para-quem" },
-  { label: "Planos e Preços", href: "/precos" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Blog", href: "/blog" },
+  { label: "Como Funciona",  href: "/como-funciona" },
+  { label: "Nichos",         href: "/para-quem" },
+  { label: "Planos e Preços",href: "/precos" },
+  { label: "Blog & FAQ",     href: "/blog" },
 ];
 
 export default function Footer() {
