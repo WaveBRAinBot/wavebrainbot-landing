@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { CheckCheck } from "lucide-react";
+import Image from "next/image";
 
 type Message = {
   id: number;
@@ -12,15 +13,18 @@ type Message = {
 };
 
 const CHAT: Message[] = [
-  { id: 1, text: "Oi, vim pelo anúncio. Pensei em automatizar meu atendimento.", sender: "user", time: "10:42", delay: 1000 },
-  { id: 2, text: "Olá! Sou a IA da WaveBRAinBot 🧠. Eu resolvo isso para você. Posso atender e agendar seus leads em poucos segundos.", sender: "bot", time: "10:42", delay: 3500 },
-  { id: 3, text: "Legal. Eu queria saber sobre valores e agendar uma reunião.", sender: "user", time: "10:42", delay: 6000 },
-  { id: 4, text: "Claro! Os planos começam em R$ 799/mês. Já enviei as opções completas e inseri nossa reunião na sua agenda para amanhã. Até lá! ✨", sender: "bot", time: "10:42", delay: 8500 },
+  { id: 1, text: "Oi, vi o anúncio de vocês. Como que funciona para eu colocar um agente na minha empresa?", sender: "user", time: "10:42", delay: 1000 },
+  { id: 2, text: "Olá! Sou a IA da WAVE 🧠\n\nEu resolvo o atendimento para você. Posso qualificar e agendar todos os seus leads, tudo pelo WhatsApp e em segundos.\n\nQual o seu nicho de atuação?", sender: "bot", time: "10:42", delay: 4500 },
+  { id: 3, text: "Eu tenho uma clínica de estética. Gostaria de saber os valores.", sender: "user", time: "10:43", delay: 9500 },
+  { id: 4, text: "Perfeito! Para clínicas, eu reduzo muito as faltas usando lembretes ativos e fecho pacotes direto no WhatsApp.\n\nOs projetos costumam variar de acordo com o tamanho da sua operação e o volume de leads.\n\nPosso agendar uma breve reunião para te mostrar na prática?", sender: "bot", time: "10:43", delay: 14500 },
+  { id: 5, text: "Pode sim, amanhã de tarde.", sender: "user", time: "10:45", delay: 18500 },
+  { id: 6, text: "Tudo certo! Marquei na agenda para amanhã às 14h.\n\nVocê acabou de receber o convite no seu Calendar. Até lá! ✨", sender: "bot", time: "10:45", delay: 22000 },
 ];
 
 export default function WhatsAppSimulator() {
   const [visibleMessages, setVisibleMessages] = useState<number[]>([]);
   const [isTyping, setIsTyping] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let timeouts: NodeJS.Timeout[] = [];
@@ -40,6 +44,12 @@ export default function WhatsAppSimulator() {
         setTimeout(() => {
           setIsTyping(false);
           setVisibleMessages((prev) => [...prev, msg.id]);
+          // Auto scroll to bottom
+          setTimeout(() => {
+            if (containerRef.current) {
+              containerRef.current.scrollTop = containerRef.current.scrollHeight;
+            }
+          }, 100);
         }, msg.delay)
       );
     });
@@ -48,24 +58,28 @@ export default function WhatsAppSimulator() {
   }, []);
 
   return (
-    <div className="max-w-md mx-auto w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative mt-12 bg-black backdrop-blur-sm"
-         style={{ boxShadow: "0 20px 40px -10px var(--brand-green)" }}>
+    <div className="max-w-md mx-auto w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative mt-12 bg-black/40 backdrop-blur-xl"
+         style={{ boxShadow: "0 20px 40px -10px rgba(57,255,20,0.15)" }}>
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
       {/* Header */}
-      <div className="bg-[#1e1e1e] px-4 py-3 flex items-center gap-3 border-b border-white/5">
-        <div className="w-10 h-10 rounded-full bg-brand-green/20 flex items-center justify-center p-1 relative overflow-hidden" style={{ background: "var(--brand-green)" }}>
-             <span className="text-black font-bold text-sm z-10 relative">WB</span>
+      <div className="bg-black/60 px-4 py-3 flex items-center gap-3 border-b border-white/5 backdrop-blur-md">
+        <div className="w-10 h-10 rounded-full flex items-center justify-center relative overflow-hidden border border-white/10 shrink-0 bg-black">
+          <Image src="/images/logo.webp" alt="WAVE" fill className="object-contain p-1" />
         </div>
         <div className="text-left">
-          <h4 className="text-white font-medium text-sm">WaveBRAinBot IA</h4>
-          <p className="text-white/60 text-xs">Aguardando novos leads...</p>
+          <h4 className="text-white font-semibold text-sm">WAVE</h4>
+          <p className="text-[var(--brand-green)] text-xs font-medium">Online</p>
         </div>
       </div>
       
       {/* Chat Area */}
-      <div className="p-4 bg-[oklch(0.1_0_0)] bg-cover bg-center h-[320px] overflow-y-auto flex flex-col gap-3 relative z-10">
-        
-        {/* Background mesh using simple gradient */}
-        <div className="absolute inset-0 opacity-[0.03] z-0" style={{ backgroundImage: "linear-gradient(#39ff14 1px, transparent 1px), linear-gradient(90deg, #39ff14 1px, transparent 1px)", backgroundSize: "20px 20px" }}></div>
+      <div 
+        ref={containerRef}
+        className="p-4 h-[380px] overflow-y-auto flex flex-col gap-3 relative z-10 no-scrollbar scroll-smooth"
+      >
         
         {CHAT.map((msg) => (
           <div
@@ -80,7 +94,7 @@ export default function WhatsAppSimulator() {
           >
             {visibleMessages.includes(msg.id) && (
               <>
-                <p className="leading-snug pr-8 pb-3 text-left">{msg.text}</p>
+                <p className="leading-relaxed pr-8 pb-3 text-left whitespace-pre-wrap">{msg.text}</p>
                 <div className="absolute bottom-1 right-2 flex items-center gap-1 text-[10px] text-white/50">
                   {msg.time}
                   {msg.sender === "user" && <CheckCheck size={14} style={{ color: "var(--brand-cyan)" }} />}

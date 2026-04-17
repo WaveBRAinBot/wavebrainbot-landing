@@ -97,11 +97,11 @@ export default function CosmicBackground() {
         color,
         x: -60 - i * 150,
         y: cometSpawnY(canvas.height),
-        vx: 0.55 + Math.random() * 0.4,
+        vx: 1.2 + Math.random() * 0.8,
         vy: -(Math.random() * 0.15) + (Math.random() * 0.15),
-        len: 35 + Math.random() * 25,
+        len: 80 + Math.random() * 80,
         alpha: 0,
-        alphaTarget: 0.6 + Math.random() * 0.25,
+        alphaTarget: 0.7 + Math.random() * 0.3,
         w0,
       };
     });
@@ -201,21 +201,21 @@ export default function CosmicBackground() {
         c.x += c.vx;
         c.y += c.vy;
 
-        const fadeMargin = w * 0.15;
+        const fadeMargin = w * 0.25;
         if (c.x > w - fadeMargin) {
-          c.alpha = Math.max(0, c.alpha - 0.015);
+          c.alpha = Math.max(0, c.alpha - 0.025);
         } else {
-          c.alpha = Math.min(c.alphaTarget, c.alpha + 0.012);
+          c.alpha = Math.min(c.alphaTarget, c.alpha + 0.015);
         }
 
         if (c.x > w + c.len + 10) {
-          c.x = -c.len - Math.random() * 100;
+          c.x = -c.len - Math.random() * 200;
           c.y = cometSpawnY(h);
-          c.vx = 0.55 + Math.random() * 0.4;
+          c.vx = 1.2 + Math.random() * 0.8;
           c.vy = (Math.random() - 0.5) * 0.2;
-          c.len = 35 + Math.random() * 25;
+          c.len = 80 + Math.random() * 80;
           c.alpha = 0;
-          c.alphaTarget = 0.6 + Math.random() * 0.25;
+          c.alphaTarget = 0.7 + Math.random() * 0.3;
         }
 
         if (c.alpha <= 0.01) return;
@@ -233,19 +233,19 @@ export default function CosmicBackground() {
         ctx.moveTo(tailX, tailY);
         ctx.lineTo(c.x, c.y);
         ctx.strokeStyle = cometGrad;
-        ctx.lineWidth = 1.8;
+        ctx.lineWidth = 2.5;
         ctx.lineCap = 'round';
         ctx.globalAlpha = c.alpha;
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.arc(c.x, c.y, 4, 0, Math.PI * 2);
+        ctx.arc(c.x, c.y, 6, 0, Math.PI * 2);
         ctx.fillStyle = c.color;
-        ctx.globalAlpha = c.alpha * 0.4;
+        ctx.globalAlpha = c.alpha * 0.5;
         ctx.fill();
 
         ctx.beginPath();
-        ctx.arc(c.x, c.y, 2, 0, Math.PI * 2);
+        ctx.arc(c.x, c.y, 3, 0, Math.PI * 2);
         ctx.fillStyle = '#ffffff';
         ctx.globalAlpha = c.alpha;
         ctx.fill();

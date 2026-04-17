@@ -94,7 +94,7 @@ export default function Hero() {
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Construímos a operação de IA do seu negócio — agentes que atendem, qualificam e convertem no WhatsApp, integrados a tráfego pago e automações que escalam resultado.
+            Construímos a operação de IA do seu negócio. Agentes que atendem, qualificam e convertem no WhatsApp, integrados a automações que escalam resultados.
           </p>
 
           {/* CTAs */}
