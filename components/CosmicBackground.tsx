@@ -85,29 +85,26 @@ export default function CosmicBackground() {
       { x: 0.5, y: 0.88, r: 0.22, color: "#39ff14", phase: 1.0, pulseSpeed: 0.0005 },
     ];
 
-    // Shooting stars
-    interface Shoot {
-      x: number; y: number; vx: number; vy: number; len: number; life: number; maxLife: number; color: string;
+    // CRM Comets
+    interface Comet {
+      x: number; y: number; vx: number; vy: number; len: number; alpha: number; alphaTarget: number; color: string; w0: number;
     }
-    const shoots: Shoot[] = [];
-    let lastShoot = 0;
-
-    const spawnShoot = (t: number) => {
-      if (t - lastShoot < 3000 + Math.random() * 4000) return;
-      lastShoot = t;
-      const angle = (-Math.PI / 6) + (Math.random() - 0.5) * 0.3;
-      const speed = 8 + Math.random() * 6;
-      shoots.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height * 0.4,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        len: 60 + Math.random() * 80,
-        life: 0,
-        maxLife: 40 + Math.random() * 20,
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
-      });
-    };
+    const COMET_COLORS = ["#39ff14", "#00e5ff", "#ffe600", "#a855f7", "#ffffff"];
+    const cometSpawnY = (h: number) => h * 0.1 + Math.random() * h * 0.8;
+    const comets: Comet[] = COMET_COLORS.map((color, i) => {
+      const w0 = canvas.width || 1000;
+      return {
+        color,
+        x: -60 - i * 150,
+        y: cometSpawnY(canvas.height),
+        vx: 0.55 + Math.random() * 0.4,
+        vy: -(Math.random() * 0.15) + (Math.random() * 0.15),
+        len: 35 + Math.random() * 25,
+        alpha: 0,
+        alphaTarget: 0.6 + Math.random() * 0.25,
+        w0,
+      };
+    });
 
     let raf: number;
     let lastFrame = 0;
@@ -199,35 +196,61 @@ export default function CosmicBackground() {
         if (p.x > w) p.x = 0;
       });
 
-      // ── Shooting stars ───────────────────────────────────────────────
-      spawnShoot(t);
-      for (let i = shoots.length - 1; i >= 0; i--) {
-        const s = shoots[i];
-        s.life++;
-        const progress = s.life / s.maxLife;
-        const alpha = progress < 0.3
-          ? progress / 0.3
-          : 1 - (progress - 0.3) / 0.7;
+      // ── CRM Comets ───────────────────────────────────────────────
+      comets.forEach(c => {
+        c.x += c.vx;
+        c.y += c.vy;
 
-        const tailX = s.x - (s.vx / Math.sqrt(s.vx ** 2 + s.vy ** 2)) * s.len * progress;
-        const tailY = s.y - (s.vy / Math.sqrt(s.vx ** 2 + s.vy ** 2)) * s.len * progress;
+        const fadeMargin = w * 0.15;
+        if (c.x > w - fadeMargin) {
+          c.alpha = Math.max(0, c.alpha - 0.015);
+        } else {
+          c.alpha = Math.min(c.alphaTarget, c.alpha + 0.012);
+        }
 
-        const grad = ctx.createLinearGradient(tailX, tailY, s.x, s.y);
-        grad.addColorStop(0, `rgba(255,255,255,0)`);
-        grad.addColorStop(1, `rgba(255,255,255,${alpha * 0.8})`);
+        if (c.x > w + c.len + 10) {
+          c.x = -c.len - Math.random() * 100;
+          c.y = cometSpawnY(h);
+          c.vx = 0.55 + Math.random() * 0.4;
+          c.vy = (Math.random() - 0.5) * 0.2;
+          c.len = 35 + Math.random() * 25;
+          c.alpha = 0;
+          c.alphaTarget = 0.6 + Math.random() * 0.25;
+        }
+
+        if (c.alpha <= 0.01) return;
+
+        const mag = Math.hypot(c.vx, c.vy);
+        const tailX = c.x - (c.vx / mag) * c.len;
+        const tailY = c.y - (c.vy / mag) * c.len;
+
+        const cometGrad = ctx.createLinearGradient(tailX, tailY, c.x, c.y);
+        cometGrad.addColorStop(0, 'rgba(0,0,0,0)');
+        cometGrad.addColorStop(0.6, `${c.color}${Math.round(c.alpha * 160).toString(16).padStart(2, '0')}`);
+        cometGrad.addColorStop(1, `#ffffff${Math.round(c.alpha * 255).toString(16).padStart(2, '0')}`);
+
         ctx.beginPath();
         ctx.moveTo(tailX, tailY);
-        ctx.lineTo(s.x, s.y);
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = 1.5;
+        ctx.lineTo(c.x, c.y);
+        ctx.strokeStyle = cometGrad;
+        ctx.lineWidth = 1.8;
+        ctx.lineCap = 'round';
+        ctx.globalAlpha = c.alpha;
         ctx.stroke();
 
-        s.x += s.vx;
-        s.y += s.vy;
-        if (s.life >= s.maxLife || s.x > w || s.y > h) {
-          shoots.splice(i, 1);
-        }
-      }
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, 4, 0, Math.PI * 2);
+        ctx.fillStyle = c.color;
+        ctx.globalAlpha = c.alpha * 0.4;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.globalAlpha = c.alpha;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      });
 
       raf = requestAnimationFrame(tick);
     };

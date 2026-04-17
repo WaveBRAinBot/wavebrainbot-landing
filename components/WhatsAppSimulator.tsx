@@ -12,10 +12,10 @@ type Message = {
 };
 
 const CHAT: Message[] = [
-  { id: 1, text: "Oi, vim pelo anúncio. Queria saber o preço.", sender: "user", time: "10:42", delay: 1000 },
-  { id: 2, text: "Olá! Sou o agente IA da WaveBRAinBot. Percebi que você está interessado. Podemos te enviar os planos se quiser! O valor começa em R$ 799.", sender: "bot", time: "10:42", delay: 3500 },
-  { id: 3, text: "Ótimo. Posso agendar uma reunião?", sender: "user", time: "10:42", delay: 6000 },
-  { id: 4, text: "Claro! Vamos lá. Agendamento sugerido para amanhã às 14h. Já inseri no seu Calendar. Até lá! ✨", sender: "bot", time: "10:42", delay: 8500 },
+  { id: 1, text: "Oi, vim pelo anúncio. Pensei em automatizar meu atendimento.", sender: "user", time: "10:42", delay: 1000 },
+  { id: 2, text: "Olá! Sou a IA da WaveBRAinBot 🧠. Eu resolvo isso para você. Posso atender e agendar seus leads em poucos segundos.", sender: "bot", time: "10:42", delay: 3500 },
+  { id: 3, text: "Legal. Eu queria saber sobre valores e agendar uma reunião.", sender: "user", time: "10:42", delay: 6000 },
+  { id: 4, text: "Claro! Os planos começam em R$ 799/mês. Já enviei as opções completas e inseri nossa reunião na sua agenda para amanhã. Até lá! ✨", sender: "bot", time: "10:42", delay: 8500 },
 ];
 
 export default function WhatsAppSimulator() {
@@ -80,7 +80,7 @@ export default function WhatsAppSimulator() {
           >
             {visibleMessages.includes(msg.id) && (
               <>
-                <p className="leading-snug pr-8 text-left">{msg.text}</p>
+                <p className="leading-snug pr-8 pb-3 text-left">{msg.text}</p>
                 <div className="absolute bottom-1 right-2 flex items-center gap-1 text-[10px] text-white/50">
                   {msg.time}
                   {msg.sender === "user" && <CheckCheck size={14} style={{ color: "var(--brand-cyan)" }} />}

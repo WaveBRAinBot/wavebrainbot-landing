@@ -164,7 +164,7 @@ export default function SpeedToLead() {
         {/* CTA inline */}
         <div className="text-center">
           <p className="text-white/60 mb-4 text-sm">
-            O WaveBRAinBot responde em <span style={{ color: "var(--brand-green)" }} className="font-bold">menos de 3 segundos</span>, 24/7.
+            O WaveBRAinBot responde <span style={{ color: "var(--brand-green)" }} className="font-bold">em segundos</span>, 24/7.
           </p>
           <a
             href={WA_LINK}
