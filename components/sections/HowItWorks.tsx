@@ -73,21 +73,37 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Content */}
-                <div className="gradient-border rounded-2xl p-6 flex-1 bg-white/[0.02]">
-                  <div className="flex items-start justify-between gap-4 flex-wrap">
+                <div className="relative rounded-[24px] p-6 flex-1 shadow-md hover:shadow-xl transition-all duration-500 overflow-hidden group hover:-translate-y-1">
+                  {/* Animated gradient border wrapper */}
+                  <div 
+                    className="absolute inset-0 rounded-[24px] pointer-events-none transition-opacity duration-500 opacity-30 group-hover:opacity-100"
+                    style={{ background: `linear-gradient(135deg, ${i % 2 === 0 ? "var(--brand-green)" : "var(--brand-cyan)"}, transparent 50%)` }}
+                  >
+                     {/* Inner dark area */}
+                     <div className="absolute inset-[1px] rounded-[23px] bg-[#0a0a0a] transition-all duration-500 opacity-90 backdrop-blur-xl group-hover:opacity-80" />
+                  </div>
+
+                  {/* Inner Glow */}
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{ background: `radial-gradient(circle at 0% 50%, ${i % 2 === 0 ? "var(--brand-green)" : "var(--brand-cyan)"}15, transparent 60%)` }}
+                  />
+
+                  <div className="relative z-10 flex items-start justify-between gap-4 flex-wrap">
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-2">
+                      <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
                         {step.title}
                       </h3>
-                      <p className="text-white/50 text-sm leading-relaxed max-w-xl">
+                      <p className="text-white/60 text-sm leading-relaxed max-w-xl">
                         {step.description}
                       </p>
                     </div>
                     <span
-                      className="text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0"
+                      className="text-xs font-bold px-3 py-1.5 rounded-full flex-shrink-0 shadow-lg"
                       style={{
                         background: "rgba(57,255,20,0.1)",
                         color: "var(--brand-green)",
+                        border: "1px solid rgba(57,255,20,0.2)"
                       }}
                     >
                       {step.duration}

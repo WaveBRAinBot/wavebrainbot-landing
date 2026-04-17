@@ -107,30 +107,42 @@ export default function Pricing() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative rounded-3xl p-8 flex flex-col transition-all duration-300 ${
+              className={`relative rounded-[24px] p-8 flex flex-col transition-all duration-500 overflow-hidden group ${
                 plan.highlight
-                  ? "glow-green scale-[1.02]"
-                  : "bg-white/[0.03] border border-white/10"
+                  ? "shadow-2xl hover:-translate-y-2 scale-[1.02]"
+                  : "shadow-md hover:shadow-2xl hover:-translate-y-2"
               }`}
-              style={
-                plan.highlight
-                  ? {
-                      background:
-                        "linear-gradient(135deg, rgba(57,255,20,0.08) 0%, rgba(0,229,255,0.05) 100%)",
-                      border: "1px solid rgba(57,255,20,0.3)",
-                    }
-                  : {}
-              }
+              style={{
+                boxShadow: plan.highlight ? '0 15px 40px -10px rgba(57,255,20,0.3)' : '0 5px 30px -10px rgba(0,229,255,0.15)'
+              }}
             >
-              {plan.highlight && (
-                <div
-                  className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold text-black flex items-center gap-1"
-                  style={{ background: "var(--brand-green)" }}
-                >
-                  <Star size={12} fill="currentColor" />
-                  Mais Popular
-                </div>
-              )}
+              {/* Animated gradient border wrapper */}
+              <div 
+                className={`absolute inset-0 rounded-[24px] pointer-events-none transition-opacity duration-500 ${plan.highlight ? 'opacity-100' : 'opacity-30 group-hover:opacity-100'}`}
+                style={{ background: `linear-gradient(135deg, ${plan.highlight ? 'var(--brand-green)' : 'var(--brand-cyan)'}, transparent 60%)` }}
+              >
+                 {/* Inner dark area */}
+                 <div className={`absolute inset-[1px] rounded-[23px] bg-[#0a0a0a] transition-all duration-500 ${plan.highlight ? 'opacity-90 backdrop-blur-xl group-hover:opacity-85' : 'opacity-90 backdrop-blur-xl group-hover:opacity-80'}`} />
+              </div>
+
+              {/* Background glow on hover */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                style={{
+                  background: `radial-gradient(circle at 50% 0%, ${plan.highlight ? 'rgba(57,255,20,0.15)' : 'rgba(0,229,255,0.1)'} 0%, transparent 70%)`,
+                }}
+              />
+
+              <div className="relative z-10 flex flex-col h-full">
+                {plan.highlight && (
+                  <div
+                    className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold text-black flex items-center gap-1 shadow-[0_0_15px_rgba(57,255,20,0.4)]"
+                    style={{ background: "var(--brand-green)" }}
+                  >
+                    <Star size={12} fill="currentColor" />
+                    Mais Popular
+                  </div>
+                )}
 
               {/* Header */}
               <div className="mb-6">
@@ -173,20 +185,23 @@ export default function Pricing() {
               </ul>
 
               {/* CTA */}
-              <a
-                href={WA_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  buttonVariants({ variant: plan.highlight ? "default" : "outline" }),
-                  "w-full font-bold justify-center",
-                  plan.highlight ? "text-black" : "text-white border-white/20"
-                )}
-                style={plan.highlight ? { background: "var(--brand-green)" } : {}}
-              >
-                Começar agora
-              </a>
+              <div className="mt-auto pt-6">
+                <a
+                  href={WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    buttonVariants({ variant: plan.highlight ? "default" : "outline" }),
+                    "w-full font-bold justify-center transition-all hover:scale-105",
+                    plan.highlight ? "text-black shadow-[0_0_20px_rgba(57,255,20,0.3)] hover:shadow-[0_0_30px_rgba(57,255,20,0.5)]" : "text-white border-white/20 hover:bg-white/5"
+                  )}
+                  style={plan.highlight ? { background: "var(--brand-green)" } : {}}
+                >
+                  Começar agora
+                </a>
+              </div>
             </div>
+          </div>
           ))}
         </div>
 

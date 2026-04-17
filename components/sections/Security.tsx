@@ -86,16 +86,34 @@ export default function Security() {
           {pillars.map((p) => (
             <div
               key={p.title}
-              className="gradient-border rounded-2xl p-6 bg-white/[0.02] hover:bg-white/[0.04] transition-all group"
+              className="relative rounded-[24px] p-6 transition-all duration-500 overflow-hidden group shadow-md hover:shadow-2xl hover:-translate-y-1"
+              style={{ boxShadow: `0 5px 30px -10px ${p.color}20` }}
             >
-              <div
-                className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
-                style={{ background: `${p.color}15` }}
+              {/* Animated gradient border wrapper */}
+              <div 
+                className="absolute inset-0 rounded-[24px] pointer-events-none transition-opacity duration-500 opacity-30 group-hover:opacity-100"
+                style={{ background: `linear-gradient(135deg, ${p.color}, transparent 50%)` }}
               >
-                <p.icon size={20} style={{ color: p.color }} />
+                 {/* Inner dark area */}
+                 <div className="absolute inset-[1px] rounded-[23px] bg-[#0a0a0a] transition-all duration-500 opacity-90 backdrop-blur-xl group-hover:opacity-80" />
               </div>
-              <h3 className="text-white font-bold text-sm mb-2">{p.title}</h3>
-              <p className="text-white/50 text-sm leading-relaxed">{p.description}</p>
+
+              {/* Inner Glow hover */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                style={{ background: `radial-gradient(circle at 100% 100%, ${p.color}15, transparent 60%)` }}
+              />
+
+              <div className="relative z-10 flex flex-col gap-2">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-transform group-hover:scale-110 duration-500"
+                  style={{ background: `${p.color}15`, border: `1px solid ${p.color}30` }}
+                >
+                  <p.icon size={22} style={{ color: p.color }} />
+                </div>
+                <h3 className="text-white font-bold text-base tracking-tight">{p.title}</h3>
+                <p className="text-white/60 text-sm leading-relaxed">{p.description}</p>
+              </div>
             </div>
           ))}
         </div>

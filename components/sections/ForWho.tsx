@@ -53,18 +53,36 @@ export default function ForWho() {
         {/* Segments grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
           {segments.map((s) => (
-            <div
-              key={s.label}
-              className="gradient-border rounded-2xl p-4 flex flex-col items-center gap-3 text-center bg-white/[0.02] hover:bg-white/[0.04] transition-all cursor-default"
-            >
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center"
-                style={{ background: "rgba(57,255,20,0.1)" }}
+                key={s.label}
+                className="relative rounded-[24px] p-4 flex flex-col items-center gap-3 text-center transition-all duration-500 overflow-hidden group hover:-translate-y-1 shadow-md hover:shadow-xl"
+                style={{ boxShadow: "0 5px 30px -10px rgba(57,255,20,0.15)" }}
               >
-                <s.icon size={22} style={{ color: "var(--brand-green)" }} />
+                {/* Animated gradient border wrapper */}
+                <div 
+                  className="absolute inset-0 rounded-[24px] pointer-events-none transition-opacity duration-500 opacity-20 group-hover:opacity-100"
+                  style={{ background: "linear-gradient(135deg, var(--brand-green), transparent 50%)" }}
+                >
+                   {/* Inner dark area */}
+                   <div className="absolute inset-[1px] rounded-[23px] bg-[#0a0a0a] transition-all duration-500 opacity-90 backdrop-blur-xl group-hover:opacity-80" />
+                </div>
+
+                {/* Inner Glow hover */}
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                  style={{ background: "radial-gradient(circle at 50% 100%, rgba(57,255,20,0.15), transparent 60%)" }}
+                />
+
+                <div className="relative z-10 flex flex-col items-center gap-3 w-full">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 duration-500"
+                    style={{ background: "rgba(57,255,20,0.15)", border: "1px solid rgba(57,255,20,0.3)" }}
+                  >
+                    <s.icon size={22} style={{ color: "var(--brand-green)" }} />
+                  </div>
+                  <span className="text-sm text-white/80 font-semibold">{s.label}</span>
+                </div>
               </div>
-              <span className="text-sm text-white/80 font-medium">{s.label}</span>
-            </div>
           ))}
         </div>
 
@@ -77,13 +95,21 @@ export default function ForWho() {
             {qualifiers.map((q) => (
               <div
                 key={q}
-                className="flex items-center gap-4 gradient-border rounded-xl px-5 py-4 bg-white/[0.02]"
+                className="relative rounded-xl px-5 py-4 transition-all duration-300 overflow-hidden group shadow-md"
               >
-                <div
-                  className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                  style={{ background: "var(--brand-green)" }}
-                />
-                <span className="text-white/70 text-sm">{q}</span>
+                <div 
+                  className="absolute inset-0 rounded-xl pointer-events-none opacity-30 group-hover:opacity-60 transition-opacity duration-500"
+                  style={{ background: "linear-gradient(90deg, rgba(57,255,20,0.8), transparent 40%)" }}
+                >
+                   <div className="absolute inset-[1px] rounded-[11px] bg-[#0a0a0a] opacity-90 backdrop-blur-md" />
+                </div>
+                <div className="relative z-10 flex items-center gap-4">
+                  <div
+                    className="w-2.5 h-2.5 rounded-full flex-shrink-0 shadow-[0_0_8px_var(--brand-green)]"
+                    style={{ background: "var(--brand-green)" }}
+                  />
+                  <span className="text-white/80 font-medium text-sm">{q}</span>
+                </div>
               </div>
             ))}
           </div>
