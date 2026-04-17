@@ -8,6 +8,7 @@ const niches = [
   {
     emoji: "🏥",
     label: "Clínicas & Saúde",
+    slug: "clinicas",
     priority: "Nicho #1",
     color: "var(--brand-green)",
     problem: "Perdem pacientes por demora na resposta e falta de agendamento automático.",
@@ -23,6 +24,7 @@ const niches = [
   {
     emoji: "🏠",
     label: "Imobiliárias",
+    slug: "imobiliarias",
     priority: "Nicho #2",
     color: "var(--brand-cyan)",
     problem: "Lead de tráfego pago é caro — perdê-lo por lentidão é dinheiro no lixo.",
@@ -38,6 +40,7 @@ const niches = [
   {
     emoji: "⚖️",
     label: "Escritórios de Advocacia",
+    slug: "advocacia",
     priority: "Nicho #3",
     color: "var(--brand-yellow)",
     problem: "Clientes de alto valor não esperam — e o setor jurídico ainda ignora isso.",
@@ -121,21 +124,30 @@ export default function Niches() {
 
                 {/* Right — solução + resultado */}
                 <div className="flex flex-col justify-between gap-4">
-                  <div
-                    className="rounded-xl p-4"
-                    style={{ background: `${niche.color}08`, border: `1px solid ${niche.color}20` }}
+                  <div className="flex flex-col gap-4">
+                    <div
+                      className="rounded-xl p-4"
+                      style={{ background: `${niche.color}08`, border: `1px solid ${niche.color}20` }}
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: niche.color }}>
+                        Como resolvemos
+                      </p>
+                      <p className="text-white/70 text-sm leading-relaxed">{niche.solution}</p>
+                    </div>
+                    <div className="rounded-xl p-4 bg-white/[0.02]">
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-white/40">
+                        Resultado esperado
+                      </p>
+                      <p className="text-white/60 text-sm leading-relaxed">{niche.result}</p>
+                    </div>
+                  </div>
+                  <a
+                    href={`/${niche.slug}`}
+                    className="mt-2 text-[13px] font-bold text-center inline-flex justify-center items-center gap-1.5 transition-all hover:scale-105 hover:opacity-80 pb-2"
+                    style={{ color: niche.color, textShadow: `0 0 10px ${niche.color}40` }}
                   >
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: niche.color }}>
-                      Como resolvemos
-                    </p>
-                    <p className="text-white/70 text-sm leading-relaxed">{niche.solution}</p>
-                  </div>
-                  <div className="rounded-xl p-4 bg-white/[0.02]">
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-white/40">
-                      Resultado esperado
-                    </p>
-                    <p className="text-white/60 text-sm leading-relaxed">{niche.result}</p>
-                  </div>
+                    Ver caso para {niche.label} <span>→</span>
+                  </a>
                 </div>
               </div>
             </div>

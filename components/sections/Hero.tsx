@@ -62,15 +62,7 @@ function CountStat({
 export default function Hero() {
   return (
     <section className="hero-gradient relative min-h-screen flex items-center pt-20">
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(57,255,20,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(57,255,20,0.5) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
+      {/* Background is handled cleanly by CosmicBackground.tsx */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -134,6 +126,17 @@ export default function Hero() {
 
           {/* WhatsApp Simulator */}
           <WhatsAppSimulator />
+
+          <div className="mt-8 text-center">
+            <a 
+              href="https://wa.me/SEU_NUMERO_AQUI_TESTE" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 hover:text-white text-sm font-medium transition-colors underline underline-offset-4 decoration-white/20 inline-flex items-center gap-1 group"
+            >
+              Quer ver na prática? Teste nossa IA e veja ela agendando você <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+            </a>
+          </div>
 
           {/* Stats */}
           <div className="mt-16 flex flex-wrap justify-center gap-8">
