@@ -52,37 +52,37 @@ export default function CosmicBackground() {
     window.addEventListener("resize", resize);
 
     // Stars — bright static points that twinkle
-    const stars: Star[] = Array.from({ length: 180 }, () => ({
+    const stars: Star[] = Array.from({ length: 300 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      r: Math.random() * 1.2 + 0.2,
+      r: Math.random() * 1.5 + 0.3,
       color: COLORS[Math.floor(Math.random() * COLORS.length)],
       phase: Math.random() * Math.PI * 2,
       twinkleSpeed: 0.0005 + Math.random() * 0.0018,
-      driftX: (Math.random() - 0.5) * 0.03,
-      driftY: (Math.random() - 0.5) * 0.015,
+      driftX: (Math.random() - 0.5) * 0.04,
+      driftY: (Math.random() - 0.5) * 0.02,
     }));
 
     // Particles — smaller, floating upward
-    const particles: Particle[] = Array.from({ length: 80 }, () => ({
+    const particles: Particle[] = Array.from({ length: 150 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      r: Math.random() * 0.8 + 0.2,
+      r: Math.random() * 1.0 + 0.3,
       color: COLORS[Math.floor(Math.random() * COLORS.length)],
-      speed: Math.random() * 0.04 + 0.01,
+      speed: Math.random() * 0.05 + 0.015,
       phase: Math.random() * Math.PI * 2,
       twinkleSpeed: 0.0008 + Math.random() * 0.002,
-      driftX: (Math.random() - 0.5) * 0.25,
+      driftX: (Math.random() - 0.5) * 0.3,
     }));
 
     // Nebula orbs — large soft glowing blobs
     const orbs: Orb[] = [
-      { x: 0.15, y: 0.08, r: 0.25, color: "#39ff14", phase: 0, pulseSpeed: 0.0004 },
-      { x: 0.85, y: 0.18, r: 0.2, color: "#00e5ff", phase: 1.5, pulseSpeed: 0.0005 },
-      { x: 0.5, y: 0.42, r: 0.18, color: "#39ff14", phase: 3.0, pulseSpeed: 0.0003 },
-      { x: 0.1, y: 0.65, r: 0.22, color: "#00e5ff", phase: 0.8, pulseSpeed: 0.0006 },
-      { x: 0.9, y: 0.72, r: 0.2, color: "#ffe600", phase: 2.2, pulseSpeed: 0.0004 },
-      { x: 0.5, y: 0.88, r: 0.22, color: "#39ff14", phase: 1.0, pulseSpeed: 0.0005 },
+      { x: 0.15, y: 0.18, r: 0.35, color: "#39ff14", phase: 0, pulseSpeed: 0.0003 },
+      { x: 0.85, y: 0.25, r: 0.3, color: "#00e5ff", phase: 1.5, pulseSpeed: 0.0004 },
+      { x: 0.5, y: 0.52, r: 0.25, color: "#a855f7", phase: 3.0, pulseSpeed: 0.0002 },
+      { x: 0.2, y: 0.75, r: 0.32, color: "#00e5ff", phase: 0.8, pulseSpeed: 0.0005 },
+      { x: 0.8, y: 0.82, r: 0.3, color: "#ffe600", phase: 2.2, pulseSpeed: 0.0003 },
+      { x: 0.5, y: 0.95, r: 0.35, color: "#39ff14", phase: 1.0, pulseSpeed: 0.0004 },
     ];
 
     // CRM Comets
@@ -135,8 +135,8 @@ export default function CosmicBackground() {
         const g = parseInt(hex.substring(2, 4), 16);
         const b = parseInt(hex.substring(4, 6), 16);
 
-        grad.addColorStop(0, `rgba(${r},${g},${b},0.05)`);
-        grad.addColorStop(0.4, `rgba(${r},${g},${b},0.03)`);
+        grad.addColorStop(0, `rgba(${r},${g},${b},0.08)`);
+        grad.addColorStop(0.3, `rgba(${r},${g},${b},0.04)`);
         grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
         ctx.fillStyle = grad;
         ctx.beginPath();
@@ -178,7 +178,8 @@ export default function CosmicBackground() {
 
       // ── Floating particles ───────────────────────────────────────────
       particles.forEach((p) => {
-        const alpha = 0.08 + Math.abs(Math.sin(t * p.twinkleSpeed + p.phase)) * 0.18;
+        const alpha = 0.15 + Math.abs(Math.sin(t * p.twinkleSpeed + p.phase)) * 0.25;
+        // Particle core
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
