@@ -2,8 +2,10 @@
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { MessageCircle, Zap } from "lucide-react";
+import { MessageCircle, Zap, ShieldCheck, Database, Calendar } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
+import MagneticButton from "@/components/MagneticButton";
+import WhatsAppSimulator from "@/components/WhatsAppSimulator";
 
 const WA_LINK = "https://wa.me/5513996663009";
 
@@ -97,20 +99,22 @@ export default function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+            <MagneticButton
+              as="a"
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: "default", size: "lg" }),
-                "font-bold text-black text-base px-8 py-6 glow-green inline-flex items-center gap-2"
+                "font-bold text-black text-base px-8 py-6 glow-green inline-flex items-center gap-2 relative shadow-xl shadow-green-400/20"
               )}
               style={{ background: "var(--brand-green)" }}
             >
               <MessageCircle size={20} />
               Quero meu Agente de IA
-            </a>
-            <a
+            </MagneticButton>
+            <MagneticButton
+              as="a"
               href="/como-funciona"
               className={cn(
                 buttonVariants({ variant: "outline" }),
@@ -118,8 +122,18 @@ export default function Hero() {
               )}
             >
               Ver como funciona
-            </a>
+            </MagneticButton>
           </div>
+
+          {/* Trust Signals & Social Proof */}
+          <div className="mt-8 flex flex-wrap justify-center gap-6 text-white/40 text-xs sm:text-sm font-medium">
+            <span className="flex items-center gap-1"><ShieldCheck size={16} className="text-[#a855f7]" /> Proteção LGPD</span>
+            <span className="flex items-center gap-1"><Database size={16} className="text-[var(--brand-cyan)]" /> Integração Direta</span>
+            <span className="flex items-center gap-1"><Calendar size={16} className="text-[var(--brand-yellow)]" /> Agendamento Fácil</span>
+          </div>
+
+          {/* WhatsApp Simulator */}
+          <WhatsAppSimulator />
 
           {/* Stats */}
           <div className="mt-16 flex flex-wrap justify-center gap-8">

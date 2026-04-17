@@ -5,7 +5,7 @@ export const structuredData = {
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   description:
-    "Agente de IA para WhatsApp que automatiza atendimento, qualifica leads e converte clientes 24/7.",
+    "Infraestrutura de IA para performance: agentes 24/7 no WhatsApp que automatizam atendimento, qualificam leads e agendam reuniões em menos de 3 segundos.",
   offers: [
     {
       "@type": "Offer",
