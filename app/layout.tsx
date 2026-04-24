@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, Space_Mono } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import CursorGlow from "@/components/CursorGlow";
 import Analytics from "@/components/Analytics";
 import { structuredData } from "./structured-data";
+import { BASE_URL } from "@/lib/constants";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -17,13 +18,6 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-inter",
-  display: "swap",
-});
-
-const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-space-mono",
   display: "swap",
 });
 
@@ -48,14 +42,28 @@ export const metadata: Metadata = {
       "Infraestrutura de IA para performance: agentes 24/7, tráfego pago e automações que escalam resultado.",
     type: "website",
     locale: "pt_BR",
-    url: "https://wavebrainbot.com.br",
+    url: BASE_URL,
   },
   twitter: {
     card: "summary_large_image",
     title: "WaveBRAinBot — Agência de Performance com IA",
     description: "Infraestrutura de IA para performance: agentes 24/7, tráfego pago e automações que escalam resultado.",
+    images: ["/opengraph-image"],
   },
-  metadataBase: new URL("https://wavebrainbot.com.br"),
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  metadataBase: new URL(BASE_URL),
   icons: {
     icon: [
       { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
@@ -66,15 +74,13 @@ export const metadata: Metadata = {
   },
 };
 
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${spaceGrotesk.variable} ${inter.variable} ${spaceMono.variable} h-full antialiased`}>
+    <html lang="pt-BR" className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         {/* static — XSS safe */}
         <script

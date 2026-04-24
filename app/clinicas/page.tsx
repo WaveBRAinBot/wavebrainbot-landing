@@ -5,10 +5,12 @@ import MagneticButton from "@/components/MagneticButton";
 import { MessageCircle, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
+import { WA_LINK_CTA as WA_LINK } from "@/lib/constants";
 
 export const metadata = {
   title: "WaveBRAinBot | IA para Clínicas e Consultórios",
   description: "Zere suas faltas, preencha sua agenda e confirme consultas automaticamente 24/7 sem sobrecarregar sua recepção.",
+  alternates: { canonical: "/clinicas" },
 };
 
 export default function ClinicasPage() {

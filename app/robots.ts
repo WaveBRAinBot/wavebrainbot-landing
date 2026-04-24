@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/obrigado"],
     },
     sitemap: "https://wavebrainbot.com.br/sitemap.xml",
   };

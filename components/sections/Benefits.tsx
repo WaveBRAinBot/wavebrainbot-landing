@@ -83,7 +83,7 @@ export default function Benefits() {
                 style={{ background: `linear-gradient(135deg, ${b.color}, transparent 50%)` }}
               >
                  {/* Inner dark area */}
-                 <div className="absolute inset-[1px] rounded-[23px] bg-[#0a0a0a] transition-all duration-500 opacity-90 backdrop-blur-xl group-hover:opacity-80" />
+                 <div className="absolute inset-[1px] rounded-[23px] bg-[#0a0a0a] transition-all duration-500 opacity-90 group-hover:opacity-80" />
               </div>
 
               {/* Glow on hover inside */}

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Blog & FAQ — WaveBRAinBot",
   description:
     "Insights sobre IA aplicada ao WhatsApp, velocidade de atendimento e conversão de leads. Mais as respostas para as dúvidas mais comuns.",
+  alternates: { canonical: "/blog" },
 };
 
 const posts = [

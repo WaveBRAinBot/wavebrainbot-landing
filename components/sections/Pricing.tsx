@@ -1,8 +1,7 @@
 import { CheckCircle2, Star } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-const WA_LINK = "https://wa.me/5513996663009";
+import { WA_LINK } from "@/lib/constants";
 
 const plans = [
   {
@@ -122,7 +121,7 @@ export default function Pricing() {
                 style={{ background: `linear-gradient(135deg, ${plan.highlight ? 'var(--brand-green)' : 'var(--brand-cyan)'}, transparent 60%)` }}
               >
                  {/* Inner dark area */}
-                 <div className={`absolute inset-[1px] rounded-[23px] bg-[#0a0a0a] transition-all duration-500 ${plan.highlight ? 'opacity-90 backdrop-blur-xl group-hover:opacity-85' : 'opacity-90 backdrop-blur-xl group-hover:opacity-80'}`} />
+                 <div className={`absolute inset-[1px] rounded-[23px] bg-[#0a0a0a] transition-all duration-500 ${plan.highlight ? 'opacity-90 group-hover:opacity-85' : 'opacity-90 group-hover:opacity-80'}`} />
               </div>
 
               {/* Background glow on hover */}

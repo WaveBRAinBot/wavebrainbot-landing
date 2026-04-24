@@ -44,17 +44,29 @@ export default function CosmicBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const isMobile = window.innerWidth < 768;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = document.documentElement.scrollHeight;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
     resize();
     window.addEventListener("resize", resize);
 
+    const STAR_COUNT = isMobile ? 80 : 180;
+    const PARTICLE_COUNT = isMobile ? 40 : 90;
+
     // Stars — bright static points that twinkle
-    const stars: Star[] = Array.from({ length: 300 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
+    const stars: Star[] = Array.from({ length: STAR_COUNT }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
       r: Math.random() * 1.5 + 0.3,
       color: COLORS[Math.floor(Math.random() * COLORS.length)],
       phase: Math.random() * Math.PI * 2,
@@ -64,9 +76,9 @@ export default function CosmicBackground() {
     }));
 
     // Particles — smaller, floating upward
-    const particles: Particle[] = Array.from({ length: 150 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
+    const particles: Particle[] = Array.from({ length: PARTICLE_COUNT }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
       r: Math.random() * 1.0 + 0.3,
       color: COLORS[Math.floor(Math.random() * COLORS.length)],
       speed: Math.random() * 0.05 + 0.015,
@@ -92,11 +104,11 @@ export default function CosmicBackground() {
     const COMET_COLORS = ["#39ff14", "#00e5ff", "#ffe600", "#a855f7", "#ffffff"];
     const cometSpawnY = (h: number) => h * 0.1 + Math.random() * h * 0.8;
     const comets: Comet[] = COMET_COLORS.map((color, i) => {
-      const w0 = canvas.width || 1000;
+      const w0 = window.innerWidth || 1000;
       return {
         color,
         x: -60 - i * 150,
-        y: cometSpawnY(canvas.height),
+        y: cometSpawnY(window.innerHeight),
         vx: 1.2 + Math.random() * 0.8,
         vy: -(Math.random() * 0.15) + (Math.random() * 0.15),
         len: 80 + Math.random() * 80,
@@ -108,7 +120,7 @@ export default function CosmicBackground() {
 
     let raf: number;
     let lastFrame = 0;
-    const FRAME_MS = 1000 / 30;
+    const FRAME_MS = 1000 / (isMobile ? 24 : 30);
 
     const tick = (t: number) => {
       if (t - lastFrame < FRAME_MS) {
@@ -117,8 +129,8 @@ export default function CosmicBackground() {
       }
       lastFrame = t;
 
-      const w = canvas.width;
-      const h = canvas.height;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
       ctx.clearRect(0, 0, w, h);
 
       // ── Nebula orbs ──────────────────────────────────────────────────
@@ -256,10 +268,28 @@ export default function CosmicBackground() {
       raf = requestAnimationFrame(tick);
     };
 
+    if (reduceMotion) {
+      tick(performance.now());
+      return () => {
+        window.removeEventListener("resize", resize);
+      };
+    }
+
     raf = requestAnimationFrame(tick);
+
+    const onVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(raf);
+      } else {
+        raf = requestAnimationFrame(tick);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
 

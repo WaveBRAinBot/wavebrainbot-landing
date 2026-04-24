@@ -1,9 +1,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { MessageCircle } from "lucide-react";
-
-const WA_LINK =
-  "https://wa.me/5513996663009?text=Olá!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20o%20agente%20de%20IA%20para%20WhatsApp";
+import { WA_LINK_CTA as WA_LINK } from "@/lib/constants";
 
 export default function CTA() {
   return (

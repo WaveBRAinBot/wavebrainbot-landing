@@ -9,6 +9,11 @@ export default function CursorGlow() {
     const el = glowRef.current;
     if (!el) return;
 
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      el.style.display = "none";
+      return;
+    }
+
     let x = -200, y = -200;
     let cx = -200, cy = -200;
     let raf: number;

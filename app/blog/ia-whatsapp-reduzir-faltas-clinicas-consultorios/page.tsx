@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/sections/Footer";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { WA_LINK } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Como a IA no WhatsApp reduz faltas em clínicas e consultórios — WaveBRAinBot",
@@ -16,9 +17,8 @@ export const metadata: Metadata = {
     type: "article",
     locale: "pt_BR",
   },
+  alternates: { canonical: "/blog/ia-whatsapp-reduzir-faltas-clinicas-consultorios" },
 };
-
-const WA_LINK = "https://wa.me/5513996663009";
 
 export default function ArticlePage() {
   return (

@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   title: "Para Quem É — WaveBRAinBot",
   description:
     "Veja os nichos atendidos pelo WaveBRAinBot, quem se beneficia e quem não é o perfil ideal. Descubra se é a solução certa para o seu negócio.",
+  alternates: { canonical: "/para-quem" },
 };
 
 export default function ParaQuem() {

@@ -1,13 +1,10 @@
-"use client";
-
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { MessageCircle, Zap, ShieldCheck, Database, Calendar } from "lucide-react";
-import { useCountUp } from "@/hooks/useCountUp";
 import MagneticButton from "@/components/MagneticButton";
 import WhatsAppSimulator from "@/components/WhatsAppSimulator";
-
-const WA_LINK = "https://wa.me/5513996663009";
+import CountStat from "@/components/CountStat";
+import { WA_LINK } from "@/lib/constants";
 
 function StatBadge({
   value,
@@ -17,7 +14,6 @@ function StatBadge({
 }: {
   value?: string;
   suffix?: string;
-  countTo?: number;
   label: string;
   color: string;
 }) {
@@ -25,34 +21,6 @@ function StatBadge({
     <div className="flex flex-col items-center">
       <span className="text-3xl font-black" style={{ color, textShadow: `0 0 20px ${color}80` }}>
         {value}{suffix}
-      </span>
-      <span className="text-white/40 text-sm">{label}</span>
-    </div>
-  );
-}
-
-function CountStat({
-  target,
-  prefix,
-  suffix,
-  label,
-  color,
-}: {
-  target: number;
-  prefix?: string;
-  suffix?: string;
-  label: string;
-  color: string;
-}) {
-  const { ref, value } = useCountUp(target, 2000);
-  return (
-    <div className="flex flex-col items-center">
-      <span
-        ref={ref}
-        className="text-3xl font-black"
-        style={{ color, textShadow: `0 0 20px ${color}80` }}
-      >
-        {prefix}{value}{suffix}
       </span>
       <span className="text-white/40 text-sm">{label}</span>
     </div>
@@ -86,7 +54,7 @@ export default function Hero() {
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Construímos a operação de IA do seu negócio. Agentes que atendem, qualificam e convertem no WhatsApp, integrados a automações que escalam resultados.
+            Responda leads em 3 segundos, 24/7 — e pare de perder venda pro concorrente mais rápido. Nosso agente qualifica, agenda e converte no WhatsApp enquanto você foca no que importa.
           </p>
 
           {/* CTAs */}
@@ -128,8 +96,8 @@ export default function Hero() {
           <WhatsAppSimulator />
 
           <div className="mt-8 text-center">
-            <a 
-              href="https://wa.me/SEU_NUMERO_AQUI_TESTE" 
+            <a
+              href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/50 hover:text-white text-sm font-medium transition-colors underline underline-offset-4 decoration-white/20 inline-flex items-center gap-1 group"

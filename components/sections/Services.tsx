@@ -84,7 +84,7 @@ export default function Services() {
                   style={{ background: `linear-gradient(135deg, ${s.color}, transparent 60%)` }}
                 >
                    {/* Inner dark area */}
-                   <div className="absolute inset-[1px] rounded-[23px] bg-[#0a0a0a] transition-all duration-500 opacity-90 backdrop-blur-xl group-hover:opacity-85" />
+                   <div className="absolute inset-[1px] rounded-[23px] bg-[#0a0a0a] transition-all duration-500 opacity-90 group-hover:opacity-85" />
                 </div>
 
                 {/* Glow on hover inside */}

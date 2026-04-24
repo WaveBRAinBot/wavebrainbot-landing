@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   title: "Planos e Preços — WaveBRAinBot",
   description:
     "Compare os planos do WaveBRAinBot, veja as garantias de segurança e LGPD. Sem fidelidade longa, suporte completo desde o primeiro dia.",
+  alternates: { canonical: "/precos" },
 };
 
 export default function Precos() {

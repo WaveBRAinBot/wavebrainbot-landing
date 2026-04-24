@@ -5,10 +5,12 @@ import MagneticButton from "@/components/MagneticButton";
 import { MessageCircle, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
+import { WA_LINK_CTA as WA_LINK } from "@/lib/constants";
 
 export const metadata = {
   title: "WaveBRAinBot | IA para Imobiliárias e Corretores",
   description: "Qualifique leads frios, agende visitas instantaneamente e não perca mais dinheiro com tráfego pago esquecido na caixa de entrada.",
+  alternates: { canonical: "/imobiliarias" },
 };
 
 export default function ImobiliariasPage() {

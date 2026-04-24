@@ -5,10 +5,12 @@ import MagneticButton from "@/components/MagneticButton";
 import { MessageCircle, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
+import { WA_LINK_CTA as WA_LINK } from "@/lib/constants";
 
 export const metadata = {
   title: "WaveBRAinBot | IA para Advogados e Escritórios Jurídicos",
   description: "Faça a triagem técnica inicial de clientes 24/7, colete documentos e libere seus advogados focar apenas nos honorários.",
+  alternates: { canonical: "/advocacia" },
 };
 
 export default function AdvocaciaPage() {

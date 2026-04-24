@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   title: "Como Funciona — WaveBRAinBot",
   description:
     "Veja o que o agente de IA do WaveBRAinBot faz, o processo de onboarding completo e como funciona o modelo de gestor de IA dedicado.",
+  alternates: { canonical: "/como-funciona" },
 };
 
 export default function ComoFunciona() {

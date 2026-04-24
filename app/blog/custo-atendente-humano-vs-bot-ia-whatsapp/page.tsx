@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/sections/Footer";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { WA_LINK } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Custo real de um atendente humano vs bot de IA no WhatsApp — WaveBRAinBot",
@@ -16,9 +17,8 @@ export const metadata: Metadata = {
     type: "article",
     locale: "pt_BR",
   },
+  alternates: { canonical: "/blog/custo-atendente-humano-vs-bot-ia-whatsapp" },
 };
-
-const WA_LINK = "https://wa.me/5513996663009";
 
 export default function ArticlePage() {
   return (

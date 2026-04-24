@@ -1,5 +1,4 @@
 import { X, Check } from "lucide-react";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const notFor = [
   "Quer resultado sem ter processo nenhum",

@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "Perguntas Frequentes — WaveBRAinBot",
   description:
     "Respostas para as dúvidas mais comuns sobre o WaveBRAinBot: configuração, personalização, contratos, atendimento humano e mais.",
+  alternates: { canonical: "/faq" },
 };
 
 export default function FAQPage() {
