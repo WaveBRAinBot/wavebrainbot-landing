@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import CursorGlow from "@/components/CursorGlow";
 import Analytics from "@/components/Analytics";
+import I18nProvider from "@/components/I18nProvider";
 import { structuredData } from "./structured-data";
 import { BASE_URL } from "@/lib/constants";
 
@@ -89,8 +90,10 @@ export default function RootLayout({
         />
         <Analytics />
         <CursorGlow />
-        {children}
-        <Toaster richColors position="top-right" />
+        <I18nProvider>
+          {children}
+          <Toaster richColors position="top-right" />
+        </I18nProvider>
       </body>
     </html>
   );

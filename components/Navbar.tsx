@@ -5,22 +5,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { WA_LINK } from "@/lib/constants";
-
-const navItems = [
-  { label: "Início",         href: "/" },
-  { label: "Como Funciona",  href: "/como-funciona" },
-  { label: "Nichos",         href: "/para-quem" },
-  { label: "Planos e Preços",href: "/precos" },
-  { label: "Blog & FAQ",     href: "/blog" },
-];
+import LangSwitcher from "@/components/LangSwitcher";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { t } = useTranslation("common");
+
+  const navItems = [
+    { key: "nav.home",         href: "/" },
+    { key: "nav.how_it_works", href: "/como-funciona" },
+    { key: "nav.niches",       href: "/para-quem" },
+    { key: "nav.pricing",      href: "/precos" },
+    { key: "nav.blog",         href: "/blog" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -28,7 +31,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Fecha menu ao navegar
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
@@ -45,7 +47,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3">
             <Image
               src="/images/logo.webp"
-              alt="WaveBRAinBot"
+              alt=""
               width={40}
               height={40}
               className="rounded-full"
@@ -58,7 +60,7 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
               <Link
-                key={item.label}
+                key={item.key}
                 href={item.href}
                 className={cn(
                   "text-sm transition-colors",
@@ -67,13 +69,14 @@ export default function Navbar() {
                     : "text-white/80 hover:text-white"
                 )}
               >
-                {item.label}
+                {t(item.key)}
               </Link>
             ))}
           </nav>
 
-          {/* CTA */}
-          <div className="hidden lg:block">
+          {/* Desktop right: lang + CTA */}
+          <div className="hidden lg:flex items-center gap-3">
+            <LangSwitcher />
             <a
               href={WA_LINK}
               target="_blank"
@@ -84,7 +87,7 @@ export default function Navbar() {
               )}
               style={{ background: "var(--brand-green)" }}
             >
-              Falar no WhatsApp
+              {t("nav.cta")}
             </a>
           </div>
 
@@ -105,7 +108,7 @@ export default function Navbar() {
           <nav className="flex flex-col px-4 py-4 gap-4">
             {navItems.map((item) => (
               <Link
-                key={item.label}
+                key={item.key}
                 href={item.href}
                 className={cn(
                   "py-2 text-sm transition-colors",
@@ -114,21 +117,24 @@ export default function Navbar() {
                     : "text-white/80 hover:text-white"
                 )}
               >
-                {item.label}
+                {t(item.key)}
               </Link>
             ))}
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                buttonVariants({ variant: "default" }),
-                "w-full font-semibold text-black mt-2 justify-center"
-              )}
-              style={{ background: "var(--brand-green)" }}
-            >
-              Falar no WhatsApp
-            </a>
+            <div className="pt-2 flex items-center justify-between gap-3">
+              <LangSwitcher className="flex-1 justify-center" />
+              <a
+                href={WA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  buttonVariants({ variant: "default" }),
+                  "flex-1 font-semibold text-black justify-center"
+                )}
+                style={{ background: "var(--brand-green)" }}
+              >
+                {t("nav.cta")}
+              </a>
+            </div>
           </nav>
         </div>
       )}
