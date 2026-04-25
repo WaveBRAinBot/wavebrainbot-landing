@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const BASE = "https://wavebrainbot.com.br";
+import { BASE_URL as BASE } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

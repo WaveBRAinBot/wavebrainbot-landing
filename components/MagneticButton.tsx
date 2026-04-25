@@ -1,14 +1,21 @@
 "use client";
 
-import { useRef, useState, MouseEvent } from "react";
+import { useRef, useState, MouseEvent, ElementType, ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/utils";
 
-export default function MagneticButton({
+type MagneticButtonProps<T extends ElementType = "button"> = {
+  as?: T;
+  children: React.ReactNode;
+  className?: string;
+} & Omit<ComponentPropsWithoutRef<T>, "as" | "children" | "className">;
+
+export default function MagneticButton<T extends ElementType = "button">({
   children,
   className,
-  as: Component = "button",
+  as,
   ...props
-}: any) {
+}: MagneticButtonProps<T>) {
+  const Component = (as ?? "button") as ElementType;
   const ref = useRef<HTMLElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -33,7 +40,7 @@ export default function MagneticButton({
       className={cn("transition-transform duration-100 ease-out", className)}
       style={{
         transform: `translate(${position.x}px, ${position.y}px)`,
-        ...props.style,
+        ...(props as { style?: React.CSSProperties }).style,
       }}
       {...props}
     >

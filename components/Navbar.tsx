@@ -47,7 +47,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3">
             <Image
               src="/images/logo.webp"
-              alt=""
+              alt="WaveBRAinBot"
               width={40}
               height={40}
               className="rounded-full"
@@ -93,9 +93,10 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="lg:hidden p-2 text-white"
+            className="lg:hidden p-2 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50 rounded"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
+            aria-expanded={open}
           >
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>

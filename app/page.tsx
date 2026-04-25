@@ -1,14 +1,17 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import ScrollReveal from "@/components/ScrollReveal";
 import { CosmicBackground, ExitIntent } from "@/components/ClientOnlyComponents";
 import ErrorBoundary from "@/components/error-boundary";
 import Hero from "@/components/sections/Hero";
-import SpeedToLead from "@/components/sections/SpeedToLead";
-import Benefits from "@/components/sections/Benefits";
-import Services from "@/components/sections/Services";
-import CTA from "@/components/sections/CTA";
 import Footer from "@/components/sections/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+
+// Seções below-the-fold em chunks separados — reduz bundle inicial
+const SpeedToLead = dynamic(() => import("@/components/sections/SpeedToLead"));
+const Services    = dynamic(() => import("@/components/sections/Services"));
+const Benefits    = dynamic(() => import("@/components/sections/Benefits"));
+const CTA         = dynamic(() => import("@/components/sections/CTA"));
 
 export default function Home() {
   return (

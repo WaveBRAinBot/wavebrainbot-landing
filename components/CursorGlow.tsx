@@ -9,7 +9,9 @@ export default function CursorGlow() {
     const el = glowRef.current;
     if (!el) return;
 
-    if (window.matchMedia("(pointer: coarse)").matches) {
+    const mq = window.matchMedia("(pointer: coarse)");
+
+    if (mq.matches) {
       el.style.display = "none";
       return;
     }
@@ -25,19 +27,27 @@ export default function CursorGlow() {
     window.addEventListener("mousemove", onMove, { passive: true });
 
     const animate = () => {
-      // Smooth follow with lerp
       cx += (x - cx) * 0.1;
       cy += (y - cy) * 0.1;
-      if (el) {
-        el.style.transform = `translate(${cx - 200}px, ${cy - 200}px)`;
-      }
+      if (el) el.style.transform = `translate(${cx - 200}px, ${cy - 200}px)`;
       raf = requestAnimationFrame(animate);
     };
     raf = requestAnimationFrame(animate);
 
+    // Tablet que troca de pointer (ex: Surface com caneta → toque)
+    const onPointerChange = (e: MediaQueryListEvent) => {
+      if (e.matches) {
+        el.style.display = "none";
+        window.removeEventListener("mousemove", onMove);
+        cancelAnimationFrame(raf);
+      }
+    };
+    mq.addEventListener("change", onPointerChange);
+
     return () => {
       window.removeEventListener("mousemove", onMove);
       cancelAnimationFrame(raf);
+      mq.removeEventListener("change", onPointerChange);
     };
   }, []);
 

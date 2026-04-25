@@ -91,7 +91,7 @@ export default function LangSwitcher({ className }: { className?: string }) {
           onClick={() => i18n.changeLanguage(lang.code)}
           aria-label={`Switch to ${lang.label}`}
           className={cn(
-            "flex items-center gap-1.5 rounded px-1.5 py-0.5 text-xs font-semibold transition-all duration-200",
+            "flex items-center gap-1.5 rounded px-1.5 py-0.5 text-xs font-semibold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60",
             current === lang.code
               ? "bg-white/15 text-white"
               : "text-white/50 hover:text-white/80"

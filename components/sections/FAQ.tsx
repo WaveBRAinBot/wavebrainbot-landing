@@ -23,6 +23,7 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="py-24">
+      {/* JSON-LD schema for FAQ — safe: no user input, only translated strings */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

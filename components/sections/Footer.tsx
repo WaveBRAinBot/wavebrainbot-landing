@@ -1,12 +1,18 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 
 export default function Footer() {
   const { t } = useTranslation("common");
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
 
   const navLinks = [
     { key: "footer.nav_how",     href: "/como-funciona" },
@@ -56,7 +62,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-white/55 text-xs">
-          <p>© {new Date().getFullYear()} WaveBRAinBot. {t("footer.rights")}</p>
+          <p>© {year || new Date().getFullYear()} WaveBRAinBot. {t("footer.rights")}</p>
           <p>{t("footer.founded")}</p>
         </div>
       </div>
