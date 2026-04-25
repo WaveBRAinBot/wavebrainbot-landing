@@ -64,7 +64,7 @@ export default function Navbar() {
                   "text-sm transition-colors",
                   pathname === item.href
                     ? "text-white font-semibold"
-                    : "text-white/70 hover:text-white"
+                    : "text-white/80 hover:text-white"
                 )}
               >
                 {item.label}

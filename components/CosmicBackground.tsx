@@ -133,8 +133,9 @@ export default function CosmicBackground() {
       const h = window.innerHeight;
       ctx.clearRect(0, 0, w, h);
 
-      // ── Nebula orbs ──────────────────────────────────────────────────
-      orbs.forEach((orb) => {
+      // ── Nebula orbs — 2 no mobile, 6 no desktop ──────────────────
+      const visibleOrbs = isMobile ? orbs.slice(0, 2) : orbs;
+      visibleOrbs.forEach((orb) => {
         const pulse = 0.85 + Math.sin(t * orb.pulseSpeed + orb.phase) * 0.15;
         const ox = orb.x * w;
         const oy = orb.y * h;
@@ -160,18 +161,20 @@ export default function CosmicBackground() {
       stars.forEach((s) => {
         const twinkle = 0.15 + Math.abs(Math.sin(t * s.twinkleSpeed + s.phase)) * 0.75;
 
-        // Glow halo
-        const glow = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 4);
-        const hex = s.color.replace("#", "");
-        const r = parseInt(hex.substring(0, 2), 16);
-        const g = parseInt(hex.substring(2, 4), 16);
-        const b = parseInt(hex.substring(4, 6), 16);
-        glow.addColorStop(0, `rgba(${r},${g},${b},${twinkle * 0.6})`);
-        glow.addColorStop(1, `rgba(${r},${g},${b},0)`);
-        ctx.fillStyle = glow;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r * 4, 0, Math.PI * 2);
-        ctx.fill();
+        // Glow halo — skip on mobile (expensive radial gradients)
+        if (!isMobile) {
+          const glow = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 4);
+          const hex = s.color.replace("#", "");
+          const r = parseInt(hex.substring(0, 2), 16);
+          const g = parseInt(hex.substring(2, 4), 16);
+          const b = parseInt(hex.substring(4, 6), 16);
+          glow.addColorStop(0, `rgba(${r},${g},${b},${twinkle * 0.6})`);
+          glow.addColorStop(1, `rgba(${r},${g},${b},0)`);
+          ctx.fillStyle = glow;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r * 4, 0, Math.PI * 2);
+          ctx.fill();
+        }
 
         // Core
         ctx.beginPath();
@@ -209,7 +212,8 @@ export default function CosmicBackground() {
         if (p.x > w) p.x = 0;
       });
 
-      // ── CRM Comets ───────────────────────────────────────────────
+      // ── CRM Comets — desktop only ────────────────────────────────
+      if (isMobile) { raf = requestAnimationFrame(tick); return; }
       comets.forEach(c => {
         c.x += c.vx;
         c.y += c.vy;
